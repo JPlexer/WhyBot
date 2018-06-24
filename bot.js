@@ -6,41 +6,62 @@ client.on('ready', () => {
     client.user.setGame('why_help')
 });
 
-msg = message.content.toLowerCase();
-
-    if (msg.startsWith = ("why_ping")) {
-    	message.reply('Pong!');
+client.on('message', message => {
+    if (message.content === 'why_ping') {
+    	message.reply('PONG!');
   	}
+});
 
-    if (msg.startsWith = ("why_pong") {
+client.on('message', message => {
+    if (message.content === 'why_pong') {
     	message.reply('Ping!');
   	}
+});
 
-    if (msg.startsWith = ("why_about") {
-    	message.reply('WhyBot by JPlexer Version: 0.3.0');
+client.on('message', message => {
+    if (message.content === 'why_about') {
+    	message.reply('WhyBot by JPlexer Version: 0.3.1');
   	}
+});
 
-    if (msg.startsWith = ("why_help") {
+client.on('message', message => {
+    if (message.content === 'why_help') {
     	message.reply('```why_ping/pong (You Know what it is!) why_rps rock/paper/scissors/ (Play Rock Paper Scissors) why_about(You Know what it is!)```');
   	}
+});
 
-    if (msg.startsWith = ("why_rps rock") {
+client.on('message', message => {
+    if (message.content === 'why_rps rock') {
     	message.reply('Paper! I won.');
   	}
+});
 
-    if (msg.startsWith = ("why_rps paper") {
+client.on('message', message => {
+    if (message.content === 'why_rps paper') {
     	message.reply('Scissors! I won.');
   	}
+});
 
-    if (msg.startsWith = ("why_rps scissors") {
+client.on('message', message => {
+    if (message.content === 'why_rps scissors') {
     	message.reply('Rock! I won.');
   	}
+});
 
-    if (msg.startsWith = ("why_lol") {
+client.on('message', message => {
+    if (message.content === 'why_lol') {
     	message.reply(':scream: You found the Secret :scream:');
   	}
+});
 
-    if (msg.startsWith = ("o") {
+client.on('message', message => {
+    if (message.content === 'o') {
+    	message.reply('Oh or Ok??');
+  	}
+});
+
+client.on('message', message => {
+    if (message.content === 'O') {
     	message.reply('Oh or Ok??');
   	}
 });
