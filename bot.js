@@ -8,63 +8,40 @@ client.on('ready', () => {
 
 msg = message.content.toLowerCase();
 
-client.on('message', message => {
-    if (msg.startsWith === 'why_ping') {
-    	message.reply('PONG!');
+    if (msg.startsWith = ("why_ping")) {
+    	message.reply('Pong!');
   	}
-});
 
-client.on('message', message => {
-    if (msg.startsWith === 'why_pong') {
+    if (msg.startsWith = ("why_pong") {
     	message.reply('Ping!');
   	}
-});
 
-client.on('message', message => {
-    if (msg.startsWith === 'why_about') {
-    	message.reply('WhyBot von JPlexer Version: 0.3.0');
+    if (msg.startsWith = ("why_about") {
+    	message.reply('WhyBot by JPlexer Version: 0.3.0');
   	}
-});
 
-client.on('message', message => {
-    if (msg.startsWith === 'why_help') {
-    	message.reply('```why_ping/pong (Finde heraus was es tut!) why_ssp stein/schere/papier/ (Spiele Stein Schere Papier!) why_about(Du verstehst was das bedeutet...)```');
+    if (msg.startsWith = ("why_help") {
+    	message.reply('```why_ping/pong (You Know what it is!) why_rps rock/paper/scissors/ (Play Rock Paper Scissors) why_about(You Know what it is!)```');
   	}
-});
 
-client.on('message', message => {
-    if (msg.startsWith === 'why_ssp stein') {
-    	message.reply('Papier! Ich gewinne.');
+    if (msg.startsWith = ("why_rps rock") {
+    	message.reply('Paper! I won.');
   	}
-});
 
-client.on('message', message => {
-    if (msg.startsWith === 'why_ssp papier') {
-    	message.reply('Schere! Ich gewinne.');
+    if (msg.startsWith = ("why_rps paper") {
+    	message.reply('Scissors! I won.');
   	}
-});
 
-client.on('message', message => {
-    if (msg.startsWith === 'why_ssp schere') {
-    	message.reply('Stein! Ich gewinne.');
+    if (msg.startsWith = ("why_rps scissors") {
+    	message.reply('Rock! I won.');
   	}
-});
 
-client.on('message', message => {
-    if (message.content === 'why_lol') {
-    	message.reply(':scream: Du hast das Secret gefunden :scream:');
+    if (msg.startsWith = ("why_lol") {
+    	message.reply(':scream: You found the Secret :scream:');
   	}
-});
 
-client.on('message', message => {
-    if (message.content === 'o') {
-    	message.reply('Meintest du Oh oder Ok??');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === 'O') {
-    	message.reply('Meintest du Oh oder Ok??');
+    if (msg.startsWith = ("o") {
+    	message.reply('Oh or Ok??');
   	}
 });
 
