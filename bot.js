@@ -27,7 +27,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === prefix + 'help') {
-    	message.channel.send('```prefix + ping/pong (You Know what it is!) prefix + rps rock/paper/scissors/ (Play Rock Paper Scissors) prefix + about(You Know what it is!)```');
+    	message.channel.send('```why_ping/pong (You Know what it is!) why_rps rock/paper/scissors/ (Play Rock Paper Scissors) why_about(You Know what it is!)```');
   	}
 });
 
