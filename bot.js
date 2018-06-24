@@ -8,61 +8,61 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.content === 'why_ping') {
-    	message.reply('PONG!');
+    	message.channel.send('PONG!');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'why_pong') {
-    	message.reply('Ping!');
+    	message.channel.send('Ping!');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'why_about') {
-    	message.reply('WhyBot by JPlexer Version: 0.3.1');
+    	message.channel.send('WhyBot by JPlexer Version: 0.3.1');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'why_help') {
-    	message.reply('```why_ping/pong (You Know what it is!) why_rps rock/paper/scissors/ (Play Rock Paper Scissors) why_about(You Know what it is!)```');
+    	message.channel.send('```why_ping/pong (You Know what it is!) why_rps rock/paper/scissors/ (Play Rock Paper Scissors) why_about(You Know what it is!)```');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'why_rps rock') {
-    	message.reply('Paper! I won.');
+    	message.channel.send('Paper! I won.');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'why_rps paper') {
-    	message.reply('Scissors! I won.');
+    	message.channel.send('Scissors! I won.');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'why_rps scissors') {
-    	message.reply('Rock! I won.');
+    	message.channel.send('Rock! I won.');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'why_lol') {
-    	message.reply(':scream: You found the Secret :scream:');
+    	message.channel.send(':scream: You found the Secret :scream:');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'o') {
-    	message.reply('Oh or Ok??');
+    	message.channel.send('Oh or Ok??');
   	}
 });
 
 client.on('message', message => {
     if (message.content === 'O') {
-    	message.reply('Oh or Ok??');
+    	message.channel.send('Oh or Ok??');
   	}
 });
 
