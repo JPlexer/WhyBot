@@ -3,11 +3,11 @@ const client = new Discord.Client();
 const prefix = "why_";
 var randomInt = require('random-int');
 
-lc = message.content.toLowerCase();
+var lc = message.content.toLowerCase();
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setGame(' Alpha 1.2| why_help')
+    client.user.setGame(' Alpha 1.2.1| why_help')
 });
 
 client.on('message', message => {
@@ -24,7 +24,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (lc === prefix + 'about') {
-    	message.channel.send('WhyBot by JPlexer Version: Alpha 1.2');
+    	message.channel.send('WhyBot by JPlexer Version: Alpha 1.2.1');
   	}
 });
 
