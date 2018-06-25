@@ -7,35 +7,35 @@ var lc = message.content.toLowerCase();
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setGame(' Alpha 1.2.1| why_help')
+    client.user.setGame(' Alpha 1.2.2 | why_help')
 });
 
 client.on('message', message => {
-    if (lc === prefix + 'ping') {
+    if (lc.startsWith === prefix + 'ping') {
     	message.channel.send('PONG!');
   	}
 });
 
 client.on('message', message => {
-    if (lc === prefix + 'pong') {
+    if (lc.startsWith === prefix + 'pong') {
     	message.channel.send('Ping!');
   	}
 });
 
 client.on('message', message => {
-    if (lc === prefix + 'about') {
-    	message.channel.send('WhyBot by JPlexer Version: Alpha 1.2.1');
+    if (lc.startsWith === prefix + 'about') {
+    	message.channel.send('WhyBot by JPlexer Version: Alpha 1.2.2');
   	}
 });
 
 client.on('message', message => {
-    if (lc === prefix + 'help') {
+    if (lc.startsWith === prefix + 'help') {
     	message.channel.send('```why_ping/pong (You dont know what it is!) why_rps (Play Rock Paper Scissors) why_about(You Know what it is!) why_8ball [Question]? (Its an 8ball)```');
   	}
 });
 // rps and 8ball code by github.com/gtarraga/discord-bot
 client.on('message', message => {
-if(lc === prefix + 'rps'){
+if(lc.startsWith === prefix + 'rps'){
   res = randomInt(1,3);
     //scissors 1
     //paper 2
@@ -49,7 +49,7 @@ if(lc === prefix + 'rps'){
     }
     message.channel.sendMessage("rock, paper or scissors");
   }
-    if(lc ==='rock'){
+    if(lc.startsWith ==='rock'){
       if(res===2){
         //win
         message.channel.sendMessage("I got "+ result);
@@ -65,7 +65,7 @@ if(lc === prefix + 'rps'){
       }else{
         message.channel.sendMessage("You have to start the game with why_rps")
       }
-    }else if(message.content==="paper"){
+    }else if(lc.startsWith ==="paper"){
       if(res===1){
         //win
         message.channel.sendMessage("I got "+ result);
@@ -77,7 +77,7 @@ if(lc === prefix + 'rps'){
         message.channel.sendMessage("I got "+ result);
         message.channel.sendMessage("Draw");
       }
-    }else if(message.content==="scissors"){
+    }else if(lc.startsWith ==="scissors"){
       if(res===3){
         //win
         message.channel.sendMessage("I got "+ result);
@@ -105,13 +105,13 @@ client.on("message", message => {
 });
 
 client.on('message', message => {
-    if (lc === prefix + 'lol') {
+    if (lc.startsWith === prefix + 'lol') {
     	message.channel.send(':scream: You found the Secret :scream:');
   	}
 });
 
 client.on('message', message => {
-    if (lc === 'o') {
+    if (lc.startsWith === 'o') {
     	message.channel.send('Oh or Ok??');
   	}
 });
