@@ -5,7 +5,7 @@ var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setGame('why_help')
+    client.user.setGame(' Alpha 1.1| why_help')
 });
 
 client.on('message', message => {
@@ -22,7 +22,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === prefix + 'about') {
-    	message.channel.send('WhyBot by JPlexer Version: Alpha 1');
+    	message.channel.send('WhyBot by JPlexer Version: Alpha 1.1');
   	}
 });
 
