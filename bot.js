@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
+var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('I am ready!')
