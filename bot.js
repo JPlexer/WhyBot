@@ -28,10 +28,10 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === prefix + 'help') {
-    	message.channel.send('```why_ping/pong (You dont know what it is!) why_rps (Play Rock Paper Scissors) why_about(You Know what it is!)```');
+    	message.channel.send('```why_ping/pong (You dont know what it is!) why_rps (Play Rock Paper Scissors) why_about(You Know what it is!) why_8ball [Question]? (Its an 8ball)```');
   	}
 });
-// code by github.com/gtarraga/discord-bot
+// rps and 8ball code by github.com/gtarraga/discord-bot
 client.on('message', message => {
 if(message.content === prefix + 'rps'){
   res = randomInt(1,3);
@@ -88,6 +88,18 @@ if(message.content === prefix + 'rps'){
         message.channel.sendMessage("Draw");
       }
     }
+});
+
+client.on("message", message => {
+ if ((message.content.startsWith(prefix + '8ball')) && (message.content.endsWith('?'))) {
+   var rnd = randomInt(1,5);
+   console.log(rnd);
+   if(rnd===1) message.channel.sendMessage("No.");
+   else if(rnd===2) message.channel.sendMessage("Not Probable.");
+   else if(rnd===3) message.channel.sendMessage("Maybe.");
+   else if(rnd===4) message.channel.sendMessage("Probably.");
+   else if(rnd===5) message.channel.sendMessage("Yes.");
+ };
 });
 
 client.on('message', message => {
