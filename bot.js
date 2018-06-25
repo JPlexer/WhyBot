@@ -3,37 +3,39 @@ const client = new Discord.Client();
 const prefix = "why_";
 var randomInt = require('random-int');
 
+lc = message.content.toLowerCase();
+
 client.on('ready', () => {
     console.log('I am ready!')
     client.user.setGame(' Alpha 1.1| why_help')
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'ping') {
+    if (lc === prefix + 'ping') {
     	message.channel.send('PONG!');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'pong') {
+    if (lc === prefix + 'pong') {
     	message.channel.send('Ping!');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'about') {
+    if (lc === prefix + 'about') {
     	message.channel.send('WhyBot by JPlexer Version: Alpha 1.1');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'help') {
+    if (lc === prefix + 'help') {
     	message.channel.send('```why_ping/pong (You dont know what it is!) why_rps (Play Rock Paper Scissors) why_about(You Know what it is!) why_8ball [Question]? (Its an 8ball)```');
   	}
 });
 // rps and 8ball code by github.com/gtarraga/discord-bot
 client.on('message', message => {
-if(message.content === prefix + 'rps'){
+if(lc === prefix + 'rps'){
   res = randomInt(1,3);
     //scissors 1
     //paper 2
@@ -47,7 +49,7 @@ if(message.content === prefix + 'rps'){
     }
     message.channel.sendMessage("rock, paper or scissors");
   }
-    if(message.content==='rock'){
+    if(lc ==='rock'){
       if(res===2){
         //win
         message.channel.sendMessage("I got "+ result);
@@ -91,7 +93,7 @@ if(message.content === prefix + 'rps'){
 });
 
 client.on("message", message => {
- if ((message.content.startsWith(prefix + '8ball')) && (message.content.endsWith('?'))) {
+ if ((lc.startsWith(prefix + '8ball')) && (lc.endsWith('?'))) {
    var rnd = randomInt(1,5);
    console.log(rnd);
    if(rnd===1) message.channel.sendMessage("No.");
@@ -103,19 +105,13 @@ client.on("message", message => {
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'lol') {
+    if (lc === prefix + 'lol') {
     	message.channel.send(':scream: You found the Secret :scream:');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === 'o') {
-    	message.channel.send('Oh or Ok??');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === 'O') {
+    if (lc === 'o') {
     	message.channel.send('Oh or Ok??');
   	}
 });
