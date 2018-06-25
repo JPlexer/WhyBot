@@ -22,7 +22,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === prefix + 'about') {
-    	message.channel.send('WhyBot by JPlexer Version: 0.3.1');
+    	message.channel.send('WhyBot by JPlexer Version: Alpha 1');
   	}
 });
 
