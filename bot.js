@@ -27,26 +27,66 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === prefix + 'help') {
-    	message.channel.send('```why_ping/pong (You Know what it is!) why_rps rock/paper/scissors/ (Play Rock Paper Scissors) why_about(You Know what it is!)```');
+    	message.channel.send('```why_ping/pong (You dont know what it is!) why_rps (Play Rock Paper Scissors) why_about(You Know what it is!)```');
   	}
 });
-
+// code by github.com/gtarraga/discord-bot
 client.on('message', message => {
-    if (message.content === prefix + 'rps rock') {
-    	message.channel.send('Paper! I won.') || ('Rock! Its a Tie.') || ('Scissors! I lost.' );
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === prefix + 'rps paper') {
-    	message.channel.send('Scissors! I won.') || ('Rock! I lost.') ||('Paper! Its a Tie.');
-  	}
-});
-
-client.on('message', message => {
-    if (message.content === prefix + 'rps scissors') {
-    	message.channel.send('Rock! I won.')||('Scissors! Its a Tie.')||('Paper! I lost.');
-  	}
+if(message.content===prefix + 'rps'){
+res = randomIntInc(1,3);
+    //scissors 1
+    //paper 2
+    //rock 3
+    if(res===1){
+      result="scissors";
+    }else if(res===2){
+      result="paper";
+    }else if(res===3){
+      result="rock";
+    }
+    message.channel.sendMessage("rock, paper or scissors");
+  }
+    if(message.content==='rock'){
+      if(res===2){
+        //win
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("I won!");
+      }else if(res===1){
+        //lose
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("I lost");
+      }else if(res===3){
+        //draw
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("Draw");
+      }else{
+        message.channel.sendMessage("You have to start the game with why_rps")
+      }
+    }else if(message.content==="paper"){
+      if(res===1){
+        //win
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("I won");
+      }else if(res===3){
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("I lost");
+      }else if(res===2){
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("Draw");
+      }
+    }else if(message.content==="scissors"){
+      if(res===3){
+        //win
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("I won");
+      }else if(res===2){
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("I lost");
+      }else if(res===1){
+        message.channel.sendMessage("I got "+ result);
+        message.channel.sendMessage("Draw");
+      }
+    }
 });
 
 client.on('message', message => {
