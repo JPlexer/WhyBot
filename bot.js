@@ -31,7 +31,7 @@ client.on('message', message => {
   	}
 });
 // code by github.com/gtarraga/discord-bot
-bot.on('message', message => {
+client.on('message', message => {
 if(message.content === prefix + 'rps'){
   res = randomIntInc(1,3);
     //scissors 1
