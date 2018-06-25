@@ -33,25 +33,19 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === prefix + 'rps rock') {
-    	message.channel.send('Paper! I won.')
-    or (message.channel.send('Rock! Its a Tie.'))
-    or (message.channel.send('Scissors! I lost.'));
+    	message.channel.send('Paper! I won.') || message.channel.send('Rock! Its a Tie.') || message.channel.send('Scissors! I lost.');
   	}
 });
 
 client.on('message', message => {
     if (message.content === prefix + 'rps paper') {
-    	message.channel.send('Scissors! I won.')
-      or (message.channel.send('Rock! I lost.'))
-      or (message.channel.send('Paper! Its a Tie.'));
+    	message.channel.send('Scissors! I won.') || message.channel.send('Rock! I lost.') || message.channel.send('Paper! Its a Tie.');
   	}
 });
 
 client.on('message', message => {
     if (message.content === prefix + 'rps scissors') {
-    	message.channel.send('Rock! I won.')
-      or (message.channel.send('Scissors! Its a Tie.'))
-      or (message.channel.send('Paper! I lost.'));
+    	message.channel.send('Rock! I won.') || message.channel.send('Scissors! Its a Tie.') || message.channel.send('Paper! I lost.');
   	}
 });
 
