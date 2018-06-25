@@ -2,67 +2,69 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
 
+lowercase = message.content.toLowerCase();
+
 client.on('ready', () => {
     console.log('I am ready!')
     client.user.setGame('why_help')
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'ping') {
+    if (message.content.startsWith === prefix + 'ping') {
     	message.channel.send('PONG!');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'pong') {
+    if (message.content.startsWith === prefix + 'pong') {
     	message.channel.send('Ping!');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'about') {
+    if (message.content.startsWith === prefix + 'about') {
     	message.channel.send('WhyBot by JPlexer Version: 0.3.1');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'help') {
+    if (message.content.startsWith === prefix + 'help') {
     	message.channel.send('```why_ping/pong (You Know what it is!) why_rps rock/paper/scissors/ (Play Rock Paper Scissors) why_about(You Know what it is!)```');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'rps rock') {
+    if (message.content.startsWith === prefix + 'rps rock') {
     	message.channel.send('Paper! I won.');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'rps paper') {
+    if (message.content.startsWith === prefix + 'rps paper') {
     	message.channel.send('Scissors! I won.');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'rps scissors') {
+    if (message.content.startsWith === prefix + 'rps scissors') {
     	message.channel.send('Rock! I won.');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === prefix + 'lol') {
+    if (message.content.startsWith === prefix + 'lol') {
     	message.channel.send(':scream: You found the Secret :scream:');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === 'o') {
+    if (message.content.startsWith === 'o') {
     	message.channel.send('Oh or Ok??');
   	}
 });
 
 client.on('message', message => {
-    if (message.content === 'O') {
+    if (message.content.startsWith === 'O') {
     	message.channel.send('Oh or Ok??');
   	}
 });
