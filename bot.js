@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-const botver = "0.0.3"
+const botver = "0.0.3.1"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
@@ -27,7 +27,7 @@ client.on('message', message => {
     var lc = message.content.toLowerCase();
     if (lc === prefix + 'help') {
       var embed = new Discord.RichEmbed();
-      embed.setColor("#3C3C96");
+      embed.setColor("#7289DA");
       embed.setAuthor("WhyBot Help");
       embed.setDescription("You can use this Commands with WhyBot. Just type why_[command]");
 
