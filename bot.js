@@ -171,14 +171,14 @@ cup = randomInt(1,3);
 
 client.on('message', message => {
   var lc = message.content.toLowerCase();
-  if (lc.includes === essen') {
+  if (lc.includes === 'essen') {
     message.reply('Take a Cookie! :cookie:');
   }
 });
 
 client.on('message', message => {
   var lc = message.content.toLowerCase();
-  if (lc.includes === food') {
+  if (lc.includes === 'food') {
     message.reply('Take a Cookie! :cookie:');
   }
 });
