@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-const botver = "Alpha 1.3.3"
+const botver = "Alpha 1.3.3 "
 var randomInt = require('random-int');
 
 client.on('ready', () => {
@@ -33,7 +33,7 @@ client.on('message', message => {
 
       embed.addField("User Commands", "ping\npong\nrps\n8ball\ncups\nhelp", true);
 
-      embed.setFooter("WhyBot by JPlexer" + botver);
+      embed.setFooter("WhyBot by JPlexer " + botver);
       message.channel.send("", { embed: embed });
 return true;
   	}
