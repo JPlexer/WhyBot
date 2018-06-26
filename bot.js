@@ -29,11 +29,11 @@ client.on('message', message => {
       var embed = new Discord.RichEmbed();
       embed.setColor("#3C3C96");
       embed.setAuthor("WhyBot Help");
-      embed.setDescription("Here are some things you can try. Just type why_[command]");
+      embed.setDescription("Here are the things you can use with WhyBot. Just type why_[command]");
 
       embed.addField("User Commands", "ping\npong\nrps\n8ball\ncups\nhelp", true);
 
-      embed.setFooter("WhyBot by JPlexer Version:  " + botver);
+      embed.setFooter("WhyBot by JPlexer Version: " + botver);
       message.channel.send("", { embed: embed });
 return true;
   	}
