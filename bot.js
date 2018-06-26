@@ -32,7 +32,16 @@ client.on('message', message => {
 client.on('message', message => {
     var lc = message.content.toLowerCase();
     if (lc === prefix + 'help') {
-    	message.channel.send('```why_ping/pong (You dont know what it is!) why_rps (Play Rock Paper Scissors) why_about(You Know what it is!) why_8ball [Question]? (Its an 8ball)```');
+      var embed = new Discord.RichEmbed();
+      embed.setColor("#3C3C96");
+      embed.setAuthor("WhyBot Help");
+      embed.setDescription("Here are some things you can try. Just type why_[command]");
+
+      embed.addField("User Commands", "ping\npong\nrps\n8ball\nabout\nhelp", true);
+
+      embed.setFooter("WhyBot by JPlexer");
+      message.channel.send("", { embed: embed });
+return true;
   	}
 });
 // rps and 8ball code by github.com/gtarraga/discord-bot
