@@ -114,7 +114,7 @@ client.on("message", message => {
    var lc = message.content.toLowerCase();
   if (lc === prefix + '3cups')
   var cup = randomInt(1,3);
-  //cup 1
+    //cup 1
     //cup 2
     //cup 3
     if(cup===1){
@@ -126,7 +126,7 @@ client.on("message", message => {
     }
     message.channel.sendMessage("Is the ball in Cup 1, 2 or 3");
   }
-    if(lc ==='cup 1'){
+  if(lc ==='cup 1'){
       if(cup===2){
         //lose
         message.channel.sendMessage("It was in "+ result);
