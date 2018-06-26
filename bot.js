@@ -111,8 +111,8 @@ client.on("message", message => {
 });
 
 client.on("message", message => {
-  var lc = message.content.toLowerCase();
-  if (lc === prefix + '3cup')
+   var lc = message.content.toLowerCase();
+  if (lc === prefix + '3cups')
   var cup = randomInt(1,3);
   //cup 1
     //cup 2
@@ -126,7 +126,7 @@ client.on("message", message => {
     }
     message.channel.sendMessage("Is the ball in Cup 1, 2 or 3");
   }
-    if(lc ==='rock'){
+    if(lc ==='cup 1'){
       if(cup===2){
         //lose
         message.channel.sendMessage("It was in "+ result);
@@ -140,31 +140,31 @@ client.on("message", message => {
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You lost!");
       }else{
-    }else if(lc ==="paper"){
-      if(res===1){
+    }else if(lc ==="cup 3"){
+      if(cup===1){
         //lose
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You lost!");
         //win
-      }else if(res===3){
+      }else if(cup===3){
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You won!");
         //lose
-      }else if(res===2){
+      }else if(cup===2){
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You lost!");
       }
-    }else if(lc ==="scissors"){
-      if(res===3){
+    }else if(lc ==="cup 2"){
+      if(cup===3){
         //lose
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You lost!");
         //win
-      }else if(res===2){
+      }else if(cup===2){
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You won!");
         //lose
-      }else if(res===1){
+      }else if(cup===1){
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You lost!");
       }
