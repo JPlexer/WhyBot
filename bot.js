@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-const botver = "0.0.3.2"
+const botver = "0.0.3.3"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
@@ -12,7 +12,7 @@ client.on('ready', () => {
 client.on('message', message => {
     var lc = message.content.toLowerCase();
     if (lc === prefix + 'ping') {
-    	message.channel.send('PONG!');
+    	message.channel.send('Pong!');
   	}
 });
 
