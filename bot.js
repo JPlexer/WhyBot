@@ -27,7 +27,7 @@ client.on('message', message => {
     var lc = message.content.toLowerCase();
     if (lc === prefix + 'help') {
       var embed = new Discord.RichEmbed();
-      embed.setColor("#008080");
+      embed.setColor("#80FF66");
       embed.setAuthor("WhyBot Help");
       embed.setDescription("You can use this Commands with WhyBot. Just type why_[command]");
 
