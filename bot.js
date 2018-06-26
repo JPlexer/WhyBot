@@ -6,7 +6,7 @@ var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setActivity(botver +'why_help'{type: "PLAYING"})
+    client.user.setActivity(botver + '| why_help', { type: 'PLAYING' })
 });
 
 client.on('message', message => {
