@@ -29,7 +29,7 @@ client.on('message', message => {
       var embed = new Discord.RichEmbed();
       embed.setColor("#3C3C96");
       embed.setAuthor("WhyBot Help");
-      embed.setDescription("Here are the things you can use with WhyBot. Just type why_[command]");
+      embed.setDescription("You can use this Commands with WhyBot. Just type why_[command]");
 
       embed.addField("User Commands", "ping\npong\nrps\n8ball\ncups\nhelp", true);
 
