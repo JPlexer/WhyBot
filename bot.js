@@ -139,7 +139,7 @@ client.on("message", message => {
         //lose
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You lost!");
-      }else{
+      }
     }else if(lc ==="cup 3"){
       if(cup===1){
         //lose
