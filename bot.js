@@ -5,7 +5,7 @@ var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setGame(' Alpha 1.2.2 | why_help')
+    client.user.setGame(' Alpha 1.3 | why_help')
 });
 
 client.on('message', message => {
@@ -24,22 +24,15 @@ client.on('message', message => {
 
 client.on('message', message => {
     var lc = message.content.toLowerCase();
-    if (lc === prefix + 'about') {
-    	message.channel.send('WhyBot by JPlexer Version: Alpha 1.2.2');
-  	}
-});
-
-client.on('message', message => {
-    var lc = message.content.toLowerCase();
     if (lc === prefix + 'help') {
       var embed = new Discord.RichEmbed();
       embed.setColor("#3C3C96");
       embed.setAuthor("WhyBot Help");
       embed.setDescription("Here are some things you can try. Just type why_[command]");
 
-      embed.addField("User Commands", "ping\npong\nrps\n8ball\nabout\nhelp", true);
+      embed.addField("User Commands", "ping\npong\nrps\n8ball\n3cups\nhelp", true);
 
-      embed.setFooter("WhyBot by JPlexer");
+      embed.setFooter("WhyBot by JPlexer Version 1.3");
       message.channel.send("", { embed: embed });
 return true;
   	}
@@ -116,6 +109,68 @@ client.on("message", message => {
    else if(rnd===5) message.channel.sendMessage("Yes.");
  };
 });
+
+client.on("message", message => {
+  var lc = message.content.toLowerCase();
+  if (lc === prefix + '3cup')
+  var cup = randomInt(1,3);
+  //cup 1
+    //cup 2
+    //cup 3
+    if(cup===1){
+      result="Cup 1";
+    }else if(cup===2){
+      result="Cup 2";
+    }else if(cup===3){
+      result="Cup 3";
+    }
+    message.channel.sendMessage("Is the ball in Cup 1, 2 or 3");
+  }
+    if(lc ==='rock'){
+      if(cup===2){
+        //lose
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You lost!");
+      }else if(cup===1){
+        //win
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You won!");
+      }else if(cup===3){
+        //lose
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You lost!");
+      }else{
+    }else if(lc ==="paper"){
+      if(res===1){
+        //lose
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You lost!");
+        //win
+      }else if(res===3){
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You won!");
+        //lose
+      }else if(res===2){
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You lost!");
+      }
+    }else if(lc ==="scissors"){
+      if(res===3){
+        //lose
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You lost!");
+        //win
+      }else if(res===2){
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You won!");
+        //lose
+      }else if(res===1){
+        message.channel.sendMessage("It was in "+ result);
+        message.channel.sendMessage("You lost!");
+      }
+    }
+});
+
 
 client.on('message', message => {
     var lc = message.content.toLowerCase();
