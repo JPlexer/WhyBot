@@ -125,7 +125,7 @@ client.on("message", message => {
       result="Cup 3";
     }
     message.channel.sendMessage("Is the ball in Cup 1, 2 or 3");
-  }
+  })
   if(lc ==='cup 1'){
       if(cup===2){
         //lose
