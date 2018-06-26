@@ -168,8 +168,7 @@ client.on("message", message => {
         message.channel.sendMessage("It was in "+ result);
         message.channel.sendMessage("You lost!");
       }
-    }
-});
+};
 
 
 client.on('message', message => {
