@@ -5,7 +5,7 @@ var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setGame(' Alpha 1.3 | why_help')
+    client.user.setActivity('JPlexer | why_help', { type: 'WATCHING' })
 });
 
 client.on('message', message => {
