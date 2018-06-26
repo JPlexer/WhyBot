@@ -5,7 +5,7 @@ var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setActivity('the Voices of many Users | why_help', { type: 'HEARING' })
+    client.user.setActivity('with Users | why_help', { type: 'PLAYING' })
 });
 
 client.on('message', message => {
