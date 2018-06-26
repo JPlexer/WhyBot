@@ -126,7 +126,7 @@ cup = randomInt(1,3);
   }
   message.channel.sendMessage("Cup 1, 2 or 3 (Only the Numbers)");
 }
-  if(lc ==='rock'){
+  if(lc ==='1'){
     if(cup===2){
       //win
       message.channel.sendMessage("It was"+ result);
@@ -142,7 +142,7 @@ cup = randomInt(1,3);
     }else{
       message.channel.sendMessage("You have to start the game with why_cups")
     }
-  }else if(lc ==="paper"){
+  }else if(lc ==="2"){
     if(cup===1){
       //win
       message.channel.sendMessage("It was "+ result);
@@ -154,7 +154,7 @@ cup = randomInt(1,3);
       message.channel.sendMessage("It was "+ result);
       message.channel.sendMessage("You won!");
     }
-  }else if(lc ==="scissors"){
+  }else if(lc ==="3"){
     if(cup===3){
       //win
       message.channel.sendMessage("It was "+ result);
