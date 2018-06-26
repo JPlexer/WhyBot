@@ -6,7 +6,7 @@ var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('I am ready!')
-    client.user.setActivity('version' + botver + ' | why_help', { type: 'PLAYING' })
+    client.user.setActivity('Version ' + botver + ' | why_help', { type: 'PLAYING' })
 });
 
 client.on('message', message => {
@@ -33,7 +33,7 @@ client.on('message', message => {
 
       embed.addField("User Commands", "ping\npong\nrps\n8ball\ncups\nhelp", true);
 
-      embed.setFooter("WhyBot by JPlexer Version: " + botver);
+      embed.setFooter("WhyBot by JPlexer Version:  " + botver);
       message.channel.send("", { embed: embed });
 return true;
   	}
