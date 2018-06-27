@@ -31,13 +31,28 @@ client.on('message', message => {
       embed.setAuthor("WhyBot Help");
       embed.setDescription("You can use this Commands with WhyBot. Just type why_[command]");
 
-      embed.addField("User Commands", "ping\npong\nrps\n8ball\ncups\nhelp", true);
+      embed.addField("Commands", "ping\npong\nrps\n8ball\ncups\npizza\nhelp", true);
 
       embed.setFooter("WhyBot by JPlexer Version: " + botver);
       message.channel.send("", { embed: embed });
 return true;
   	}
 });
+
+client.on('message', message => {
+   var lc = message.content.toLowerCase();
+   if (lc === prefix + 'pizza') {
+     message.channel.send('Wait a Second!');
+     message.channel.send('Pizza is ready send "OK" to claim it!');
+   }
+   if(lc === 'ok'){
+     message.channel.send('Here is your Pizza! :pizza: ')
+   }
+  }
+});
+
+
+
 // rps and 8ball code by github.com/gtarraga/discord-bot
 client.on('message', message => {
     var lc = message.content.toLowerCase();
