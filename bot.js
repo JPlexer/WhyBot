@@ -206,8 +206,9 @@ client.on('message', message => {
     result="9";
   }else if(numb===10){
     result="10";
-  }
+  
   message.channel.send('Choose a Number between 1 and 10');
+}
  if (lc === '1'){
   if (numb === 1){
   message.channel.sendMessage("The Number was "+ result);
