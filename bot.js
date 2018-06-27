@@ -5,7 +5,7 @@ const botver = "0.0.3.3"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
-    console.log('I am ready!')
+    console.log('I like Pizza!')
     client.user.setActivity('Version ' + botver + ' | why_help', { type: 'PLAYING' })
 });
 
@@ -48,7 +48,6 @@ client.on('message', message => {
    if(lc === 'ok'){
      message.channel.send('Here is your Pizza! :pizza: ')
    }
-  }
 });
 
 
