@@ -137,9 +137,9 @@ cup = randomInt(1,3);
   }else if(cup===3){
     result="Cup 3";
   }
-  message.channel.sendMessage("Cup 1, 2 or 3 (Only the Numbers)");
+  message.channel.sendMessage("Cup 1, 2 or 3 (Write the Number with Cup)");
 }
-  if(lc ==='1'){
+  if(lc ==='cup 1'){
     if(cup===2){
       //win
       message.channel.sendMessage("It was"+ result);
@@ -155,7 +155,7 @@ cup = randomInt(1,3);
     }else{
       message.channel.sendMessage("You have to start the game with why_cups")
     }
-  }else if(lc ==="2"){
+  }else if(lc ==="cup 2"){
     if(cup===1){
       //win
       message.channel.sendMessage("It was "+ result);
@@ -167,7 +167,7 @@ cup = randomInt(1,3);
       message.channel.sendMessage("It was "+ result);
       message.channel.sendMessage("You won!");
     }
-  }else if(lc ==="3"){
+  }else if(lc ==="cup 3"){
     if(cup===3){
       //win
       message.channel.sendMessage("It was "+ result);
