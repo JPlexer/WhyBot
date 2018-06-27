@@ -185,7 +185,7 @@ cup = randomInt(1,3);
 client.on('message', message => {
   var lc = message.content.toLowerCase();
   if (lc === prefix + 'guess')
-  numb = randomInt(1,10);
+  var numb = randomInt(1,10);
   if(numb===1){
     result="1";
   }else if(numb===2){
