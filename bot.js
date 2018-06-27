@@ -208,7 +208,6 @@ client.on('message', message => {
     result="10";
   }
   message.channel.send('Choose a Number between 1 and 10');
-}
  if (lc === '1'){
   if (numb === 1){
   message.channel.sendMessage("The Number was "+ result);
@@ -233,7 +232,6 @@ client.on('message', message => {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
   }
-}
 }else if (lc === '4'){
   if (numb===4){
   message.channel.sendMessage("The Number was "+ result);
@@ -242,7 +240,6 @@ client.on('message', message => {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
   }
-}
 }else if (lc === '5'){
   if (numb===5){
   message.channel.sendMessage("The Number was "+ result);
@@ -251,7 +248,6 @@ client.on('message', message => {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
   }
-}
 }else if (lc === '6'){
   if (numb===6){
   message.channel.sendMessage("The Number was "+ result);
@@ -260,7 +256,6 @@ client.on('message', message => {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
   }
-}
 }else if (lc === '7'){
   if (numb===7){
   message.channel.sendMessage("The Number was "+ result);
@@ -269,7 +264,6 @@ client.on('message', message => {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
   }
-}
 }else if (lc === '8'){
   if (numb===8){
   message.channel.sendMessage("The Number was "+ result);
@@ -278,7 +272,6 @@ client.on('message', message => {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
   }
-}
 }else if (lc === '9'){
   if (numb===9){
   message.channel.sendMessage("The Number was "+ result);
@@ -287,7 +280,6 @@ client.on('message', message => {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
   }
-}
 }else if (lc === '10'){
   if (numb===10){
   message.channel.sendMessage("The Number was "+ result);
