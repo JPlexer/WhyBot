@@ -43,9 +43,9 @@ client.on('message', message => {
    var lc = message.content.toLowerCase();
    if (lc === prefix + 'pizza') {
      message.channel.send('Wait a Second!');
-     message.channel.send('Pizza is ready... Send "OK" to claim it!');
+     message.channel.send('Pizza is ready... Send "I want Pizza" to claim it!');
    }
-   if(lc === 'ok'){
+   if(lc === 'i want pizza'){
      message.channel.send('Here is your Pizza! :pizza: ')
    }
 });
