@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-var botver = "Version 1.0"
+var botver = "Version 1.1"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
