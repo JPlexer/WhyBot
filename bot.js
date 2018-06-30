@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-const botver = "Open Alpha 1"
+const botver = "Open Alpha 1.1"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
@@ -47,6 +47,8 @@ client.on('message', message => {
    }
    if(lc === 'i want pizza'){
      message.channel.send('Here is your Pizza! :pizza: ')
+   }else if(lc === 'me want pizza'){
+    message.channel.send('Here is your Pizza! :pizza: ')
    }
 });
 
