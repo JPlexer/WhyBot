@@ -180,7 +180,7 @@ cup = randomInt(1,3);
 
 client.on('message', message => {
   var lc = message.content.toLowerCase();
-  if (message.content === 'guess'){
+  if (lc === 'guess'){
   numb = randomInt(1,10);
   if(numb===1){
     result="1";
