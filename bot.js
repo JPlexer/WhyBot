@@ -14,6 +14,7 @@ client.on('message', message => {
     if (lc === prefix + 'ping') {
       if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage('Pong! Your ping is `' + `${message.createdTimestamp - Date.now()}` + ' ms`');
+      }
     }
 });
 
