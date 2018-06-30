@@ -21,7 +21,7 @@ client.on('message', message => {
 client.on('message', message => {
     var lc = message.content.toLowerCase();
     if (lc === prefix + 'pong') {
-       message.channel.sendMessage(':ping_pong:Ping! Your pong is ' + `${message.createdTimestamp - Date.now()}` + ' ms`');
+       message.channel.sendMessage(':ping_pong:Ping! Your pong is `' + `${message.createdTimestamp - Date.now()}` + ' ms`');
     }
 });
 
