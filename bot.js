@@ -187,11 +187,4 @@ client.on('message', message => {
   	}
 });
 
-client.on('message', message => {
-    var lc = message.content.toLowerCase();
-    if (lc === 'o') {
-    	message.channel.send('Oh or Ok??');
-  	}
-});
-
 client.login(process.env.BOT_TOKEN);
