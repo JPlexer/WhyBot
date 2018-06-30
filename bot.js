@@ -5,7 +5,7 @@ const botver = "Open Alpha 1.1.1"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
-    console.log('Lets Guess the Numbers!')
+    console.log('NUmber')
     client.user.setActivity(botver + ' | why_help', { type: 'PLAYING' })
 });
 
@@ -180,8 +180,8 @@ cup = randomInt(1,3);
 
 client.on('message', message => {
   var lc = message.content.toLowerCase();
+  if (lc === 'why_guess'){
   var numb = randomInt(1,10);
-  if (lc === 'why_guess')
   if(numb===1){
     result="1";
   }else if(numb===2){
@@ -286,7 +286,7 @@ client.on('message', message => {
       message.channel.send('You lost!')
   }
 }
-});
+}});
 
 client.on('message', message => {
     var lc = message.content.toLowerCase();
