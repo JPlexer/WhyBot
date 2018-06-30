@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-const botver = "1.0"
+var botver = "1.0"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('Hey JP i am ready!')
-    client.user.setActivity('Version 'botver + ' | why_help', { type: 'PLAYING' })
+    client.user.setActivity('Version ' ,botver + ' | why_help', { type: 'PLAYING' })
 });
 
 client.on('message', message => {
