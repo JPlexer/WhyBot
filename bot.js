@@ -181,102 +181,102 @@ cup = randomInt(1,3);
 client.on('message', message => {
   var lc = message.content.toLowerCase();
   if (lc === 'guess'){
-  numb = randomInt(1,10);
-  if(numb===1){
+  zahl = randomInt(1,10);
+  if(zahl===1){
     result="1";
-  }else if(numb===2){
+  }else if(zahl===2){
     result="2";
-  }else if(numb===3){
+  }else if(zahl===3){
     result="3";
-  }else if(numb===4){
+  }else if(zahl===4){
     result="4";
-  }else if(numb===5){
+  }else if(zahl===5){
     result="5";
 
   message.channel.send('Choose a Number between 1 and 5 (Number and then 1-5');
 }
  if (lc === 'number 1'){
-  if (numb === 1){
+  if (zahl === 1){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
-    }else if(numb===2) {
+    }else if(zahl===2) {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
-    }else if(numb===3) {
+    }else if(zahl===3) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===4) {
+      }else if(zahl===4) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===5) {
+      }else if(zahl===5) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
 }else if (lc === 'number 2'){
-  if (numb===2){
+  if (zahl===2){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
-    }else if(numb===1) {
+    }else if(zahl===1) {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
-    }else if(numb===3) {
+    }else if(zahl===3) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===4) {
+      }else if(zahl===4) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===5) {
+      }else if(zahl===5) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
 }else if (lc === 'number 3'){
-  if (numb===3){
+  if (zahl===3){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
-    }else if(numb===2) {
+    }else if(zahl===2) {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
-    }else if(numb===1) {
+    }else if(zahl===1) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===4) {
+      }else if(zahl===4) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===5) {
+      }else if(zahl===5) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
 }else if (lc === 'number 4'){
-  if (numb===4){
+  if (zahl===4){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
-    }else if(numb===2) {
+    }else if(zahl===2) {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
-    }else if(numb===3) {
+    }else if(zahl===3) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===1) {
+      }else if(zahl===1) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===5) {
+      }else if(zahl===5) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
 }else if (lc === 'number 5'){
-  if (numb===5){
+  if (zahl===5){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
-    }else if(numb===2) {
+    }else if(zahl===2) {
       message.channel.sendMessage("The Number was "+ result);
       message.channel.send('You lost!')
-    }else if(numb===3) {
+    }else if(zahl===3) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===4) {
+      }else if(zahl===4) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
-      }else if(numb===1) {
+      }else if(zahl===1) {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
