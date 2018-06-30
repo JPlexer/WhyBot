@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-var botver = "1.0"
+var botver = "Version 1.0"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
     console.log('Hey JP i am ready!')
-    client.user.setActivity('Version ' ,botver + ' | why_help', { type: 'PLAYING' })
+    client.user.setActivity(botver  + ' | why_help', { type: 'PLAYING' })
 });
 
 client.on('message', message => {
@@ -35,7 +35,7 @@ client.on('message', message => {
 
       embed.addField("Commands", "ping\npong\nrps\n8ball\ncups\npizza\nhelp", true);
 
-      embed.setFooter("WhyBot by JPlexer Version: " + botver);
+      embed.setFooter("WhyBot by JPlexer " + botver);
       message.channel.send("", { embed: embed });
 return true;
   	}
