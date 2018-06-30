@@ -13,7 +13,7 @@ client.on('message', message => {
     var lc = message.content.toLowerCase();
     if (lc === prefix + 'ping') {
       if (message.content.startsWith(prefix + 'ping')) {
-        message.channel.sendMessage('Pong! Your ping is `' + `${message.createdTimestamp - Date.now()}` + ' ms`');
+        message.channel.sendMessage(':ping_pong:Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
       }
     }
 });
@@ -21,7 +21,7 @@ client.on('message', message => {
 client.on('message', message => {
     var lc = message.content.toLowerCase();
     if (lc === prefix + 'pong') {
-      message.channel.sendMessage('Ping! Your pong is `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
+       message.channel.sendMessage(':ping_pong:Ping! Your pong is ' `${message.createdTimestamp - Date.now()}` + ' ms`');
     }
 });
 
