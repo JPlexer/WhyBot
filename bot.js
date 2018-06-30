@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-const botver = "Open Alpha 1.1.1"
+const botver = "Open Alpha 1.1.2"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
@@ -180,7 +180,7 @@ cup = randomInt(1,3);
 
 client.on('message', message => {
   var lc = message.content.toLowerCase();
-  if (lc === 'why_guess'){
+  if (lc === prefix + 'guess'){
   numb = randomInt(1,10);
   if(numb===1){
     result="1";
