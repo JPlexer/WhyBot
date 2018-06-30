@@ -193,9 +193,9 @@ client.on('message', message => {
   }else if(numb===5){
     result="5";
 
-  message.channel.send('Choose a Number between 1 and 10');
+  message.channel.send('Choose a Number between 1 and 5 (Number and then 1-5');
 }
- if (lc === '1'){
+ if (lc === 'number 1'){
   if (numb === 1){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
@@ -212,7 +212,7 @@ client.on('message', message => {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
-}else if (lc === '2'){
+}else if (lc === 'number 2'){
   if (numb===2){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
@@ -229,7 +229,7 @@ client.on('message', message => {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
-}else if (lc === '3'){
+}else if (lc === 'number 3'){
   if (numb===3){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
@@ -246,7 +246,7 @@ client.on('message', message => {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
-}else if (lc === '4'){
+}else if (lc === 'number 4'){
   if (numb===4){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
@@ -263,7 +263,7 @@ client.on('message', message => {
         message.channel.sendMessage("The Number was "+ result);
         message.channel.send('You lost!')
   }
-}else if (lc === '5'){
+}else if (lc === 'number 5'){
   if (numb===5){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
