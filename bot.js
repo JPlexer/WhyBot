@@ -192,16 +192,6 @@ client.on('message', message => {
     result="4";
   }else if(numb===5){
     result="5";
-  }else if(numb===6){
-    result="6";
-  }else if(numb===7){
-    result="7";
-  }else if(numb===8){
-    result="8";
-  }else if(numb===9){
-    result="9";
-  }else if(numb===10){
-    result="10";
   
   message.channel.send('Choose a Number between 1 and 10');
 }
@@ -239,46 +229,6 @@ client.on('message', message => {
   }
 }else if (lc === '5'){
   if (numb===5){
-  message.channel.sendMessage("The Number was "+ result);
-      message.channel.sendMessage("You won!");
-    }else{
-      message.channel.sendMessage("The Number was "+ result);
-      message.channel.send('You lost!')
-  }
-}else if (lc === '6'){
-  if (numb===6){
-  message.channel.sendMessage("The Number was "+ result);
-      message.channel.sendMessage("You won!");
-    }else{
-      message.channel.sendMessage("The Number was "+ result);
-      message.channel.send('You lost!')
-  }
-}else if (lc === '7'){
-  if (numb===7){
-  message.channel.sendMessage("The Number was "+ result);
-      message.channel.sendMessage("You won!");
-    }else{
-      message.channel.sendMessage("The Number was "+ result);
-      message.channel.send('You lost!')
-  }
-}else if (lc === '8'){
-  if (numb===8){
-  message.channel.sendMessage("The Number was "+ result);
-      message.channel.sendMessage("You won!");
-    }else{
-      message.channel.sendMessage("The Number was "+ result);
-      message.channel.send('You lost!')
-  }
-}else if (lc === '9'){
-  if (numb===9){
-  message.channel.sendMessage("The Number was "+ result);
-      message.channel.sendMessage("You won!");
-    }else{
-      message.channel.sendMessage("The Number was "+ result);
-      message.channel.send('You lost!')
-  }
-}else if (lc === '10'){
-  if (numb===10){
   message.channel.sendMessage("The Number was "+ result);
       message.channel.sendMessage("You won!");
     }else{
