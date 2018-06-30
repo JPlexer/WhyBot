@@ -42,10 +42,6 @@ return true;
 client.on('message', message => {
    var lc = message.content.toLowerCase();
    if (lc === prefix + 'pizza') {
-     message.channel.send('Wait a Second!');
-     message.channel.send('Pizza is ready... Send "why_accept_pizza" to claim it!');
-   }
-   if(lc === 'why_accept_pizza'){
      message.channel.send('Here is your Pizza! :pizza: ')
    }
 });
@@ -180,6 +176,116 @@ cup = randomInt(1,3);
       message.channel.sendMessage("You lost!");
     }
   }
+});
+
+client.on('message', message => {
+  var lc = message.content.toLowerCase();
+  var numb = randomInt(1,10);
+  if (lc === 'why_guess')
+  if(numb===1){
+    result="1";
+  }else if(numb===2){
+    result="2";
+  }else if(numb===3){
+    result="3";
+  }else if(numb===4){
+    result="4";
+  }else if(numb===5){
+    result="5";
+  }else if(numb===6){
+    result="6";
+  }else if(numb===7){
+    result="7";
+  }else if(numb===8){
+    result="8";
+  }else if(numb===9){
+    result="9";
+  }else if(numb===10){
+    result="10";
+  
+  message.channel.send('Choose a Number between 1 and 10');
+}
+ if (lc === '1'){
+  if (numb === 1){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else {
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '2'){
+  if (numb===2){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '3'){
+  if (numb===3){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '4'){
+  if (numb===4){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '5'){
+  if (numb===5){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '6'){
+  if (numb===6){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '7'){
+  if (numb===7){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '8'){
+  if (numb===8){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '9'){
+  if (numb===9){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}else if (lc === '10'){
+  if (numb===10){
+  message.channel.sendMessage("The Number was "+ result);
+      message.channel.sendMessage("You won!");
+    }else{
+      message.channel.sendMessage("The Number was "+ result);
+      message.channel.send('You lost!')
+  }
+}
 });
 
 client.on('message', message => {
