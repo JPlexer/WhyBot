@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-var botver = "Version 1.1"
+var botver = "Version 1.2"
 var randomInt = require('random-int');
 
 client.on('ready', () => {
@@ -11,48 +11,30 @@ client.on('ready', () => {
 
 client.on('message', message => {
     var lc = message.content.toLowerCase();
+    var res = randomInt(1,3);
+    var rnd = randomInt(1,5);
+    var cup = randomInt(1,3);
     if (lc === prefix + 'ping') {
-      if (message.content.startsWith(prefix + 'ping')) {
         message.channel.sendMessage(':ping_pong:Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
-      }
-    }
-});
 
-client.on('message', message => {
-    var lc = message.content.toLowerCase();
-    if (lc === prefix + 'pong') {
+    }else if (lc === prefix + 'pong') {
        message.channel.sendMessage(':ping_pong:Ping! Your pong is `' + `${message.createdTimestamp - Date.now()}` + ' ms`');
-    }
-});
 
-client.on('message', message => {
-    var lc = message.content.toLowerCase();
-    if (lc === prefix + 'help') {
+}else if (lc === prefix + 'help') {
       embed = new Discord.RichEmbed();
       embed.setColor("#80FF66");
       embed.setAuthor("WhyBot Help");
       embed.setDescription("You can use this Commands with WhyBot. Just type why_[command]");
-
       embed.addField("Commands", "ping\npong\nrps\n8ball\ncups\npizza\nhelp", true);
 
       embed.setFooter("WhyBot by JPlexer " + botver);
       message.channel.send("", { embed: embed });
 return true;
-  	}
-});
 
-client.on('message', message => {
-   var lc = message.content.toLowerCase();
-   if (lc === prefix + 'pizza') {
+}else if (lc === prefix + 'pizza') {
      message.channel.send('Here is your Pizza! :pizza: ')
-   }
-});
 
-// rps and 8ball code by github.com/gtarraga/discord-bot
-client.on('message', message => {
-    var lc = message.content.toLowerCase();
-if(lc === prefix + 'rps'){
-  res = randomInt(1,3);
+}else if(lc === prefix + 'rps'){
     //scissors 1
     //paper 2
     //rock 3
@@ -105,26 +87,16 @@ if(lc === prefix + 'rps'){
         message.channel.sendMessage("I got "+ result);
         message.channel.sendMessage("Draw");
       }
-    }
-});
 
-client.on("message", message => {
-    var lc = message.content.toLowerCase();
- if ((lc.startsWith(prefix + '8ball')) && (lc.endsWith('?'))) {
-   var rnd = randomInt(1,5);
+}else if (lc.startsWith(prefix + '8ball')&(lc.endsWith('?'))){
    console.log(rnd);
    if(rnd===1) message.channel.sendMessage("No.");
    else if(rnd===2) message.channel.sendMessage("Not Probable.");
    else if(rnd===3) message.channel.sendMessage("Maybe.");
    else if(rnd===4) message.channel.sendMessage("Probably.");
    else if(rnd===5) message.channel.sendMessage("Yes.");
- };
-});
 
-client.on('message', message => {
-  var lc = message.content.toLowerCase();
-if(lc === prefix + 'cups'){
-cup = randomInt(1,3);
+}else if(lc === prefix + 'cups'){
   //scissors 1
   //paper 2
   //rock 3
@@ -140,7 +112,7 @@ cup = randomInt(1,3);
   if(lc ==='cup 1'){
     if(cup===2){
       //win
-      message.channel.sendMessage("It was"+ result);
+      message.channel.sendMessage("It was "+ result);
       message.channel.sendMessage("You lost!");
     }else if(cup===1){
       //lose
@@ -177,12 +149,8 @@ cup = randomInt(1,3);
       message.channel.sendMessage("It was "+ result);
       message.channel.sendMessage("You lost!");
     }
-  }
-});
 
-client.on('message', message => {
-    var lc = message.content.toLowerCase();
-    if (lc === prefix + 'lol') {
+}else if (lc === prefix + 'lol') {
     	message.channel.send(':scream: You found the Secret :scream:');
   	}
 });
