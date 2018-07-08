@@ -128,8 +128,8 @@ return true;
 
 
 
-    //its an 8ball
-}else if (lc.startsWith(`${prefix}8ball`)&(lc.endsWith('?'))){
+    //its an 8ball (still JS5)
+  }else if (lc.startsWith(prefix + '8ball')&(lc.endsWith('?'))){
  console.log(rnd);
  if(rnd===1) message.channel.send("No.");
  else if(rnd===2) message.channel.send("Not Probable.");
