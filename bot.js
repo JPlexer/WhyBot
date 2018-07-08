@@ -72,7 +72,7 @@ return true;
      message.channel.send('Here is your Pizza! :pizza: ')
 
 //rock paper scissors (still a bit JS5)
-}else if(lc === `${prefix}rps`){
+}else if(lc === prefix + 'rps'){
   //scissors 1
   //paper 2
   //rock 3
@@ -140,7 +140,7 @@ return true;
 
 
  //its a 3 cups game where you must guess where the ball is (still a bit JS5)
-}else if(lc === `${prefix}cups`){
+}else if(lc === prefix + 'cups'){
 //scissors 1
 //paper 2
 //rock 3
