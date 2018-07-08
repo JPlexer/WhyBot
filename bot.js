@@ -57,7 +57,7 @@ client.on('message', message => {
       embed.setColor("#00FFFB");
       embed.setAuthor("WhyBot Help");
       embed.setDescription(`You can use this Commands with WhyBot. Just type ${prefix}[command]`);
-      embed.addField("Fun & Play Commands", "ping\npong\nrps\n8ball\ncups\npizza\nhelp", true);
+      embed.addField("Fun & Play Commands", "ping\npong\npizza\nhelp", true);
       embed.addField("Music Commands", "play\nskip\nclear", true);
       
 
@@ -70,129 +70,6 @@ return true;
 //just a fun pizza feature
 }else if (lc === `${prefix}pizza`) {
      message.channel.send('Here is your Pizza! :pizza: ')
-
-//rock paper scissors (still a bit JS5)
-}else if(lc === prefix + 'rps'){
-  //scissors 1
-  //paper 2
-  //rock 3
-  if(res===1){
-    result="scissors";
-  }else if(res===2){
-    result="paper";
-  }else if(res===3){  s
-    result="rock";
-  }
-  message.channel.send("rock, paper or scissors");
-}
-  if(lc ==='rock'){
-    if(res===2){
-      //win
-      message.channel.send("I got "+ result);
-      message.channel.send("I won!");
-    }else if(res===1){
-      //lose
-      message.channel.send("I got "+ result);
-      message.channel.send("I lost");
-    }else if(res===3){
-      //draw
-      message.channel.send("I got "+ result);
-      message.channel.send("Draw");
-    }else{
-      message.channel.send("You have to start the game with "+prefix+"rps")
-    }
-  }else if(lc ==="paper"){
-    if(res===1){
-      //win
-      message.channel.send("I got "+ result);
-      message.channel.send("I won");
-    }else if(res===3){
-      message.channel.send("I got "+ result);
-      message.channel.send("I lost");
-    }else if(res===2){
-      message.channel.send("I got "+ result);
-      message.channel.send("Draw");
-    }
-  }else if(lc ==="scissors"){
-    if(res===3){
-      //win
-      message.channel.send("I got "+ result);
-      message.channel.send("I won");
-    }else if(res===2){
-      message.channel.send("I got "+ result);
-      message.channel.send("I lost");
-    }else if(res===1){
-      message.channel.send("I got "+ result);
-      message.channel.send("Draw");
-    }
-
-
-
-    //its an 8ball (still JS5)
-  }else if (lc.startsWith(prefix + '8ball')&(lc.endsWith('?'))){
- console.log(rnd);
- if(rnd===1) message.channel.send("No.");
- else if(rnd===2) message.channel.send("Not Probable.");
- else if(rnd===3) message.channel.send("Maybe.");
- else if(rnd===4) message.channel.send("Probably.");
- else if(rnd===5) message.channel.send("Yes.");
-
-
-
- //its a 3 cups game where you must guess where the ball is (still a bit JS5)
-}else if(lc === prefix + 'cups'){
-//scissors 1
-//paper 2
-//rock 3
-if(cup===1){
-  result="Cup 1";
-}else if(cup===2){
-  result="Cup 2";
-}else if(cup===3){
-  result="Cup 3";
-}
-message.channel.send("Cup 1, 2 or 3 (type Cup and then the Number)");
-}
-if(lc ==='cup 1'){
-  if(cup===2){
-    //win
-    message.channel.send("It was "+ result);
-    message.channel.send("You lost!");
-  }else if(cup===1){
-    //lose
-    message.channel.send("It was "+ result);
-    message.channel.send("You won!");
-  }else if(cup===3){
-    //draw
-    message.channel.send("It was "+ result);
-    message.channel.send("You lost!");
-  }else{
-    message.channel.send("You have to start the game with "+prefix+"cups")
-  }
-}else if(lc ==="cup 2"){
-  if(cup===1){
-    //win
-    message.channel.send("It was "+ result);
-    message.channel.send("You lost!");
-  }else if(cup===3){
-    message.channel.send("It was "+ result);
-    message.channel.send("You lost!");
-  }else if(cup===2){
-    message.channel.send("It was "+ result);
-    message.channel.send("You won!");
-  }
-}else if(lc ==="cup 3"){
-  if(cup===3){
-    //win
-    message.channel.send("It was "+ result);
-    message.channel.send("You won!");
-  }else if(cup===2){
-    message.channel.send("It was "+ result);
-    message.channel.send("You lost!");
-  }else if(cup===1){
-    message.channel.send("It was "+ result);
-    message.channel.send("You lost!");
-  }
 
     //dont tell anyone about this
 }else if (lc === `${prefix}lol`) {
