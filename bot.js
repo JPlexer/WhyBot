@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = "why_";
-const botver = "Version 2.0"
+const prefix = "why#";
+const botver = "Release 2.0"
 const ytdl = require("youtube-dl");
 const request = require("request");
 const fs = require("fs");
@@ -11,13 +11,7 @@ const fetchVideoInfo = require("youtube-info");
 const yt_api_key = process.env.YT_TOKEN;
 const bot_controller = process.env.BOT_CTRL;
 
-let queue = [];
-let isPlaying = false;
-let dispatcher = null;
-let voiceChannel = null;
-let skipReq = 0;
-let skippers = [];
-
+var guilds = {};
 
 
 client.on('ready', () => {
@@ -27,17 +21,25 @@ client.on('ready', () => {
 
 
 
-client.login(process.env.BOT_TKEN);
+client.login(process.env.BOT_TOKEN);
 
 client.on('message', message => {
   //just some Variables
     const lc = message.content.toLowerCase();
-    var res = Math.random(1,3);
-    var rnd = Math.random(1,5);
-    var cup = Math.random(1,3);
-    const member = message.member;
     const args = message.content.split(' ').slice(1).join(" ");
+    const member = message.member;
 
+    if (!guilds[message.guild.id]) {
+       guilds[message.guild.id] = {
+        queue: [],
+        queueNames: [],
+        isPlaying: false,
+        dispatcher: null,
+        voiceChannel: null,
+        skipReq: 0,
+        skippers: []
+      };
+    }
 
 //tells you your ping
     if (lc === `${prefix}ping`) {
@@ -55,13 +57,13 @@ client.on('message', message => {
 }else if (lc === `${prefix}help`) {
       embed = new Discord.RichEmbed();
       embed.setColor("#00FFFB");
-      embed.setAuthor("WhyBot Help");
-      embed.setDescription(`You can use this Commands with WhyBot. Just type ${prefix}[command]`);
-      embed.addField("Fun & Play Commands", "ping\npong\npizza\nhelp", true);
-      embed.addField("Music Commands", "play\nskip\nclear", true);
+      embed.setAuthor("WhyBeta Help");
+      embed.setDescription(`You can use this Commands with WhyBeta. Just type ${prefix}[command]`);
+      embed.addField("Fun & Play Commands", "ping\npong\nrps(Not Functional)\n8ball(Not Functional)\ncups(Not Functional)\npizza\nhelp", true);
+      embed.addField("Music Commands", "play\nskip\nclear\nqueue", true);
       
 
-      embed.setFooter(`WhyBot by JPlexer ${botver}`);
+      embed.setFooter(`WhyBeta by JPlexer ${botver}`);
       message.channel.send("", { embed });
 return true;
 
@@ -75,26 +77,26 @@ return true;
 }else if (lc === `${prefix}lol`) {
       message.channel.send(':scream: You found the Secret :scream:');
 
-
 //This is the Music Part of the Bot
-
 }else if (lc.startsWith(`${prefix}play`)) {
-  if (member.voiceChannel || client.guilds.get("338433261934215171").voiceConnection != null) {
-    if (queue.length > 0 || isPlaying) {
+  if (message.member.voiceChannel || guilds[message.guild.id].voiceChannel != null) {
+    if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
       getID(args, id => {
-        add_to_queue(id);
+        add_to_queue(id, message);
         fetchVideoInfo(id, (err, {title}) => {
           if (err) throw new Error(err);
           message.reply(` added to queue: **${title}**`);
+          guilds[message.guild.id].queueNames.push(title);
         });
       });
     } else {
       isPlaying = true;
       getID(args, id => {
-        queue.push("placeholder");
+        guilds[message.guild.id].queue.push(id);
         playMusic(id, message);
         fetchVideoInfo(id, (err, {title}) => {
           if (err) throw new Error(err);
+          guilds[message.guild.id].queueNames.push(title);
           message.reply(` now playing: **${title}**`);
         })
       });
@@ -103,71 +105,77 @@ return true;
     message.reply(" you need to be in a voice channel!");
   }
 } else if (lc.startsWith(`${prefix}skip`)) {
-  if (!skippers.includes(message.author.id)) {
-    skippers.push(message.author.id);
-    skipReq++;
-    if (skipReq >= Math.ceil((voiceChannel.members.size - 1) / 2)) {
+  if (!guilds[message.guild.id].skippers.includes(message.author.id)) {
+    guilds[message.guild.id].skippers.push(message.author.id);
+    guilds[message.guild.id].skipReq++;
+    if (guilds[message.guild.id].skipReq >= Math.ceil((guilds[message.guild.id].voiceChannel.members.size - 1) / 2)) {
       skip_song(message);
       message.reply(" your skip has been acknowledged. Skipping now");
     } else {
-      message.reply(`${` your skip has been acknolwedged. You need **${Math.ceil((voiceChannel.members.size - 1) / 2)}` - skipReq}** more skip votes!`);
+      message.reply(`${` your skip has been acknolwedged. You need **${Math.ceil((guilds[message.guild.id].voiceChannel.members.size - 1) / 2)}` - skipReq}** more skip votes!`);
     }
   } else {
     message.reply(" you already voted to skip!");
   }
+}else if (lc.startsWith(`${prefix}queue`)) {
+  var message2 = "```";
+   for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++){
+     var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0? "**(Current Song)***" : "") + "\n";
+     if ((message2 + temp).length <= 2000 - 3) {
+       message2 += temp;
+     } else {
+       message2 += "```";
+       message.channel.send(message2);
+       message2 = "```";
+     }
+    }
+message2 += "```";
+message.channel.send(message2);
+
 } else if (lc.startsWith(`${prefix}clear`)) {
-  while (queue.length > 0) {
-    queue.pop();
+  while (guilds[message.guild.id].queue.length > 0) {
+    guilds[message.guild.id].queue.pop();
   }
   message.reply("cleared the queue!");
-} else if (lc.startsWith(`${prefix}delete`)) {
-  getID(args, id => {
-    console.log(queue);
-    if (queue.includes(id)) {
-      fetchVideoInfo(id, (err, {title}) => {
-        if (err) throw new Error(err);
-        message.reply(` removing: **${title}**`);
-        const deleteindex = queue.indexOf(id);
-        queue.splice(deleteindex, 1);
-      });
-    } else {
-      message.reply(" could not find song in queue!")
-    }
-  })
- }
+}
 });
 
 function skip_song(message) {
-  dispatcher.end();
+  guilds[message.guild.id].dispatcher.end();
 }
 
 function playMusic(id, message) {
-  voiceChannel = message.member.voiceChannel;
+  guilds[message.guild.id].voiceChannel = message.member.voiceChannel;
 
-  voiceChannel.join().then(connection => {
+
+
+  guilds[message.guild.id].voiceChannel.join().then(connection => {
     stream = ytdl(`https://www.youtube.com/watch?v=${id}`,
   );
-    skipReq = 0;
-    skippers = [];
+  guilds[message.guild.id].skipReq = 0;
+  guilds[message.guild.id].skippers = [];
 
-    dispatcher = connection.playStream(stream);
-    dispatcher.on('end', () => {
-      skipReq = 0;
-      skippers = [];
-      queue.shift();
-      if (queue.length === 0) {
-        console.log('Queue is 0');
-        queue = [];
-        isPlaying = false;
-        voiceChannel.leave();
+  guilds[message.guild.id].dispatcher = connection.playStream(stream);
+  guilds[message.guild.id].dispatcher.on('end', () => {
+    guilds[message.guild.id].skipReq = 0;
+    guilds[message.guild.id].skippers = [];
+    guilds[message.guild.id].queue.shift();
+    guilds[message.guild.id].queueNames.shift();
+      if (guilds[message.guild.id].queue.length === 0) {
+        guilds[message.guild.id].queue = [];
+        guilds[message.guild.id].queueNames = [];
+        guilds[message.guild.id].isPlaying = false;
+        guilds[message.guild.id].voiceChannel.leave();
       } else {
+        setTimeout(function () {  
         playMusic(queue[0], message);
+        },500)
       }
     })
   });
 }
 
-function getID(str, cb) {
+function getID(str, cb, message) {
   if (isYoutube(str)) {
     cb(getYouTubeID(str));
   } else {
@@ -179,9 +187,9 @@ function getID(str, cb) {
 
 function add_to_queue(strID) {
   if (isYoutube(strID)) {
-    queue.push(getYoutubeID(strID));
+    guilds[message.guild.id].queue.push(getYoutubeID(strID));
   } else {
-    queue.push(strID);
+    guilds[message.guild.id].queue.push(strID);
   }
 }
 
@@ -192,6 +200,9 @@ function isYoutube(str) {
 function search_video(query, callback) {
   request(`https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=${encodeURIComponent(query)}&key=${yt_api_key}`, (error, response, body) => {
     const json = JSON.parse(body);
-    callback(json.items[0].id.videoId);
-  });
+    if (!json.items[0]) callback("3_-a9nVZYjk");
+    else {
+      callback(json.items[0].id.videoId);
+    }
+    });
 }
