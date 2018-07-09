@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = "why_";
-const botver = "Version 2.0"
+const botver = "Version 2.0.1"
 const ytdl = require("youtube-dl");
 const request = require("request");
 const fs = require("fs");
@@ -123,14 +123,17 @@ return true;
      var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0? "**(Current Song)***" : "") + "\n";
      if ((message2 + temp).length <= 2000 - 3) {
        message2 += temp;
+     }else if (guilds[message.guild.id].queue.length === 0){
+     message.channel.send("There is Nothing in the Queue")
+
      } else {
        message2 += "```";
        message.channel.send(message2);
        message2 = "```";
      }
-    }
 message2 += "```";
 message.channel.send(message2);
+}
 
 } else if (lc.startsWith(`${prefix}clear`)) {
   while (guilds[message.guild.id].queue.length > 0) {
