@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = "why#";
-const botver = "Release 2.0"
+const prefix = "why_";
+const botver = "Version 2.0"
 const ytdl = require("youtube-dl");
 const request = require("request");
 const fs = require("fs");
@@ -57,13 +57,13 @@ client.on('message', message => {
 }else if (lc === `${prefix}help`) {
       embed = new Discord.RichEmbed();
       embed.setColor("#00FFFB");
-      embed.setAuthor("WhyBeta Help");
-      embed.setDescription(`You can use this Commands with WhyBeta. Just type ${prefix}[command]`);
-      embed.addField("Fun & Play Commands", "ping\npong\nrps(Not Functional)\n8ball(Not Functional)\ncups(Not Functional)\npizza\nhelp", true);
+      embed.setAuthor("WhyBot Help");
+      embed.setDescription(`You can use this Commands with WhyBot. Just type ${prefix}[command]`);
+      embed.addField("Fun & Play Commands", "ping\npong\npizza\nhelp", true);
       embed.addField("Music Commands", "play\nskip\nclear\nqueue", true);
       
 
-      embed.setFooter(`WhyBeta by JPlexer ${botver}`);
+      embed.setFooter(`WhyBot by JPlexer ${botver}`);
       message.channel.send("", { embed });
 return true;
 
