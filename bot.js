@@ -1,24 +1,25 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const cleverbot = require("cleverbot.io");
 const prefix = "why_";
-const botver = "Version 2.0.1"
-const ytdl = require("youtube-dl");
+const botver = "Version 2.1"
+const ytdl = require("ytdl-core");
 const request = require("request");
 const fs = require("fs");
 const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
-
 const yt_api_key = process.env.YT_TOKEN;
 const bot_controller = process.env.BOT_CTRL;
+const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
+
 
 var guilds = {};
 
-
 client.on('ready', () => {
-    console.log('Hey JP i am ready!')
-    client.user.setActivity(`${botver} | ${prefix}help`, { type: 'PLAYING' })
+  console.log('Hey JP i am ready!')
+  client.user.setActivity(`${botver} | ${prefix}help`, { type: 'PLAYING' })
+  clbot.setNick('WhyBot');
 });
-
 
 
 client.login(process.env.BOT_TOKEN);
@@ -29,16 +30,17 @@ client.on('message', message => {
     const args = message.content.split(' ').slice(1).join(" ");
     const member = message.member;
 
+
     if (!guilds[message.guild.id]) {
-       guilds[message.guild.id] = {
-        queue: [],
-        queueNames: [],
-        isPlaying: false,
-        dispatcher: null,
-        voiceChannel: null,
-        skipReq: 0,
-        skippers: []
-      };
+      guilds[message.guild.id] = {
+       queue: [],
+       queueNames: [],
+       isPlaying: false,
+       dispatcher: null,
+       voiceChannel: null,
+       skipReq: 0,
+       skippers: []
+     };
     }
 
 //tells you your ping
@@ -59,8 +61,8 @@ client.on('message', message => {
       embed.setColor("#00FFFB");
       embed.setAuthor("WhyBot Help");
       embed.setDescription(`You can use this Commands with WhyBot. Just type ${prefix}[command]`);
-      embed.addField("Fun & Play Commands", "ping\npong\npizza\nhelp", true);
-      embed.addField("Music Commands", "play\nskip\nclear\nqueue", true);
+      embed.addField("Fun & Play Commands", "ping\npong\npizza\nhelp\nPing WhyBot at the beginning of a Message to chat with him", true);
+      embed.addField("Music Commands", "play\nskip\nstop\nclear\nqueue", true);
       
 
       embed.setFooter(`WhyBot by JPlexer ${botver}`);
@@ -72,6 +74,13 @@ return true;
 //just a fun pizza feature
 }else if (lc === `${prefix}pizza`) {
      message.channel.send('Here is your Pizza! :pizza: ')
+
+}else if (message.isMentioned(client.user)) {
+      clbot.create(function (err, session) {
+      clbot.ask(message.content, (err, response) => {
+      message.channel.send(response)
+        });
+  });
 
     //dont tell anyone about this
 }else if (lc === `${prefix}lol`) {
@@ -123,17 +132,23 @@ return true;
      var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0? "**(Current Song)***" : "") + "\n";
      if ((message2 + temp).length <= 2000 - 3) {
        message2 += temp;
-     }else if (guilds[message.guild.id].queue.length === 0){
-     message.channel.send("There is Nothing in the Queue")
-
+      }else if (guilds[message.guild.id].queue.length === 0){
+        message.channel.send("There is Nothing in the Queue")   
      } else {
        message2 += "```";
        message.channel.send(message2);
        message2 = "```";
      }
+    }
 message2 += "```";
 message.channel.send(message2);
-}
+
+}else if (lc === `${prefix}stop`) {
+  while (guilds[message.guild.id].queue.length > 0) {
+    guilds[message.guild.id].queue.pop();
+    skip_song(message);
+  }
+  message.reply('Stopped the Music')
 
 } else if (lc.startsWith(`${prefix}clear`)) {
   while (guilds[message.guild.id].queue.length > 0) {
@@ -142,6 +157,7 @@ message.channel.send(message2);
   message.reply("cleared the queue!");
 }
 });
+
 
 function skip_song(message) {
   guilds[message.guild.id].dispatcher.end();
@@ -171,7 +187,7 @@ function playMusic(id, message) {
         guilds[message.guild.id].voiceChannel.leave();
       } else {
         setTimeout(function () {  
-        playMusic(queue[0], message);
+        playMusic(guilds[message.guild.id].queue[0], message);
         },500)
       }
     })
@@ -188,10 +204,10 @@ function getID(str, cb, message) {
   }
 }
 
-function add_to_queue(strID) {
+function add_to_queue(strID, message) {
   if (isYoutube(strID)) {
     guilds[message.guild.id].queue.push(getYoutubeID(strID));
-  } else {
+  } else{
     guilds[message.guild.id].queue.push(strID);
   }
 }
