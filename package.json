@@ -3,6 +3,7 @@
   "description": "The ultra cool new bot made by JPlexer",
   "version": "2.1.0",
   "main": "bot.js",
+
   "scripts": {
     "start": "node bot.js"
   },
@@ -15,6 +16,6 @@
     "get-youtube-id": "^1.0.0",
     "opusscript": "0.0.3",
     "cleverbot.io": "^1.0.4",
-    "youtube-dl": "^1.12.2"
+    "ytdl-core": "^0.21.1"
   }
 }
