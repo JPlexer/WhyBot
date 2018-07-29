@@ -176,6 +176,7 @@ message.channel.send(message2);
 } else if (lc.startsWith(`${prefix}clear`)) {
   while (guilds[message.guild.id].queue.length > 0) {
     guilds[message.guild.id].queue.pop();
+    guilds[message.guild.id].queue = [];
   }
   message.reply("cleared the queue!");
 }
