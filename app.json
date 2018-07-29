@@ -18,7 +18,7 @@
       "required": true
     },
     "YT_TOKEN": {
-      "description": "Google developers project API key",
+      "description": "Youtube v3 API key",
       "required": true
     }
   },
