@@ -15,9 +15,24 @@ const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
 
 var guilds = {};
 
+
+function setGame() {
+  client.user.setActivity(getRandom("with my Users",
+                                      "Annoying JPlexer",
+                                      `${prefix}help`,
+                                      `${botver}`,
+                                      `${botver}`,
+                                      `${prefix}help`),
+                                {
+                                    type: "PLAYING"
+                                }
+                            );
+}
+
 client.on('ready', () => {
   console.log('Hey JP i am ready!')
-  client.user.setActivity(`${botver} | ${prefix}help`, { type: 'PLAYING' })
+  client.setInterval(setGame, 300000);
+  setGame();
   clbot.setNick('WhyBot');
 });
 
