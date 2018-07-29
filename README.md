@@ -1,4 +1,6 @@
-# Welcome to WhyBot.
+# Welcome to WhyBeta.
+
+### This is the Beta version of WhyBot For a Stable Release go to https://jplexer.js.org
 
 ### This bot is written in combination with Discord.js.
 
@@ -9,7 +11,7 @@ going to describe how to do it.
 Heroku is a service which provides servers and much, much more. Depending on your needs, the server (a.k.a. Dyno)
 is free of charge the time writing this guide, it will cost you **nothing**. You should create a Heroku account before proceeding.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/JPlexer/WhyBot/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/JPlexer/WhyBot/tree/beta)
 
 After deploying, click manage apps and "Configure Dynos", and make sure "worker node Bot.js" is switched on.
 
