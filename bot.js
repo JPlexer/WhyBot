@@ -177,7 +177,7 @@ message.channel.send(message2);
   while (guilds[message.guild.id].queue.length > 0) {
     guilds[message.guild.id].queue.pop();
   }
-  guilds[message.guild.id].queue = [];
+  guilds[message.guild.id] = {};
   message.reply("cleared the queue!");
 }
 });
