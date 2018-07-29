@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "why#";
-const botver = "Release 2.1"
+const botver = "b.2.1.1"
 const ytdl = require("ytdl-core");
 const request = require("request");
 const fs = require("fs");
@@ -170,10 +170,8 @@ message2 += "```";
 message.channel.send(message2);
 
 }else if (lc === `${prefix}stop`) {
-  while (guilds[message.guild.id].queue.length > 0) {
     guilds[message.guild.id].queue.pop();
     skip_song(message);
-  }
   message.reply('Stopped the Music')
 
 } else if (lc.startsWith(`${prefix}clear`)) {
