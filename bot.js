@@ -75,6 +75,7 @@ client.on('message', message => {
 
 
     //just a fun feature 'tells you your pong'
+
   } else if (lc === `${prefix}pong`) {
     message.channel.send(`:ping_pong:Ping! Your pong is \`${`${message.createdTimestamp - Date.now()}`} ms\``);
 
@@ -102,6 +103,7 @@ client.on('message', message => {
   } else if (lc === `${prefix}pizza`) {
     message.channel.send('Here is your Pizza! :pizza: ')
 
+    //Cleverbot
   } else if (message.isMentioned(client.user)) {
     clbot.create((err, session) => {
       clbot.ask(message.content, (err, response) => {
@@ -112,6 +114,18 @@ client.on('message', message => {
     //dont tell anyone about this
   } else if (lc === `${prefix}lol`) {
     message.channel.send(':scream: You found the Secret :scream:');
+
+    //Spam Prevention
+
+  } else if (lastMessages[message.author.id] == lc && sameMessageCount[message.author.id] > 3) {
+    message.reply(getRandom(
+        "Well... We all heard you.",
+        "Stop typing the same thing! You're like a broken record!",
+        "Hmm... Not sure if you'd actually say the same thing more than three times in public.",
+        "Is that the only phrase you know? Can you try typing something else?"),
+      message.delete()
+    )
+
 
     //This is the Music Part of the Bot
   } else if (lc.startsWith(`${prefix}play`)) {
