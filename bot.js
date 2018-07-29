@@ -187,7 +187,7 @@ function skip_song(message) {
 }
 
 function stop_song(message) {
-  guilds[message.guild.id].queue.pop();
+  guilds[message.guild.id].queue.length = 0;
   guilds[message.guild.id].dispatcher.end();
 }
 
