@@ -194,8 +194,8 @@ client.on('message', message => {
 
   } else if (lc.startsWith(`${prefix}clear`)) {
     while (guilds[message.guild.id].queue.length > 0) {
-    guilds[message.channel.guild.id].queue = [];
-    guilds[message.channel.guild.id].queueNames = [];
+      guilds[message.channel.guild.id].queue = [];
+      guilds[message.channel.guild.id].queueNames = [];
     }
     message.reply("cleared the queue!");
   }
@@ -278,71 +278,4 @@ function search_video(query, callback) {
       callback(json.items[0].id.videoId);
     }
   });
-}
-
-//Spam Prevention
-var spamObject = {
-  lastMessages: {},
-  spamCounting: {},
-  nonSpamCounting: {}
-};
-
-spamObject.lastMessages[message.author.id] = lastMessagesOfUser;
-spamObject.spamCounting[message.author.id] = spamCountingUser;
-spamObject.nonSpamCounting[message.author.id] = nonSpamCountingUser;
-
-var lastMessagesOfUser = spamObject.lastMessages[message.author.id];
-if (lastMessagesOfUser == null) {
-    lastMessagesOfUser = [];
-}
-
-/** @type{Number} */
-var spamCountingUser = spamObject.spamCounting[message.author.id];
-if (spamCountingUser == null) {
-    spamCountingUser = 0;
-}
-
-/** @type{Number} */
-var nonSpamCountingUser = spamObject.nonSpamCounting[message.author.id];
-if (nonSpamCountingUser == null) {
-    nonSpamCountingUser = 0;
-}
-
-var messageText = message.content.toLowerCase();
-if (messageText.length > 4) {
-    if (lastMessagesOfUser.includes(messageText)) {
-        spamCountingUser++;
-
-        if (nonSpamCountingUser > 0) {
-            nonSpamCountingUser--;
-        }
-
-        if (spamCountingUser >= 4) {
-            if (spamCountingUser == 10) {
-                message.reply("Pls dont Spam... it was the " + spamCountingUser + " Time you spammed");
-            } else if (spamCountingUser > 10) {
-              message.reply("Pls dont Spam... it was the " + spamCountingUser + " Time you spammed");
-            } else {
-                message.reply("Pls dont Spam... it was the " + spamCountingUser + " Time you spammed");
-            }
-            message.delete().catch(function() {
-                logPromiseRejection(message, "messageDelete");
-            });
-        }
-    } else {
-        //Add last message to array
-        lastMessagesOfUser.push(messageText);
-
-        //Remove 11th message if there is one
-        if (lastMessagesOfUser.length > 10) {
-            lastMessagesOfUser.splice(0, 1);
-        }
-
-        nonSpamCountingUser++;
-    }
-
-    if (nonSpamCountingUser == 10) {
-        spamCountingUser = 0;
-        nonSpamCountingUser = 0;
-    }
 }
