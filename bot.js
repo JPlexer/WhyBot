@@ -15,6 +15,17 @@ const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
 
 var guilds = {};
 
+global.getRandom = function() {
+  if (arguments.length == 1) {
+      if (typeof arguments[0] == Array) {
+          var random = Math.floor(Math.random() * 1000) % arguments[0].length;
+          return arguments[0][random];
+      }
+  } else {
+      var random = Math.floor(Math.random() * 1000) % arguments.length;
+      return arguments[random];
+  }
+}
 
 function setGame() {
   client.user.setActivity(getRandom("with my Users",
