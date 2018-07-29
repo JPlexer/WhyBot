@@ -42,7 +42,7 @@ function setGame() {
 
 client.on('ready', () => {
   console.log('Hey JP i am ready!')
-  client.setInterval(setGame, 300000);
+  client.setInterval(setGame, 30000);
   setGame();
   clbot.setNick('WhyBot');
 });
@@ -170,8 +170,7 @@ message2 += "```";
 message.channel.send(message2);
 
 }else if (lc === `${prefix}stop`) {
-    guilds[message.guild.id].queue.pop();
-    skip_song(message);
+  stop_song(message);
   message.reply('Stopped the Music')
 
 } else if (lc.startsWith(`${prefix}clear`)) {
@@ -186,6 +185,12 @@ message.channel.send(message2);
 function skip_song(message) {
   guilds[message.guild.id].dispatcher.end();
 }
+
+function stop_song(message) {
+  guilds[message.guild.id].queue.pop();
+  guilds[message.guild.id].dispatcher.end();
+}
+
 
 function playMusic(id, message) {
   guilds[message.guild.id].voiceChannel = message.member.voiceChannel;
