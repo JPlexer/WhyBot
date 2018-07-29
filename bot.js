@@ -117,7 +117,7 @@ client.on('message', message => {
 
     //Spam Prevention
 
-  } else if (lastMessages[message.author.id] == lc && sameMessageCount[message.author.id] > 3) {
+  } else if (client.user.lastMessages[message.author.id] == lc && client.user[message.author.id] > 3) {
     message.reply(getRandom(
         "Well... We all heard you.",
         "Stop typing the same thing! You're like a broken record!",
