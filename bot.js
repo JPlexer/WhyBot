@@ -115,18 +115,6 @@ client.on('message', message => {
   } else if (lc === `${prefix}lol`) {
     message.channel.send(':scream: You found the Secret :scream:');
 
-    //Spam Prevention
-
-  } else if (client.user.lastMessages[message.author.id] == lc && client.user[message.author.id] > 3) {
-    message.reply(getRandom(
-        "Well... We all heard you.",
-        "Stop typing the same thing! You're like a broken record!",
-        "Hmm... Not sure if you'd actually say the same thing more than three times in public.",
-        "Is that the only phrase you know? Can you try typing something else?"),
-      message.delete()
-    )
-
-
     //This is the Music Part of the Bot
   } else if (lc.startsWith(`${prefix}play`)) {
     if (message.member.voiceChannel || guilds[message.guild.id].voiceChannel != null) {
