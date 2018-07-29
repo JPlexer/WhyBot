@@ -1,29 +1,29 @@
-const Discord = require('discord.js');
+import Discord from 'discord.js';
 const client = new Discord.Client();
-const cleverbot = require("cleverbot.io");
+import cleverbot from "cleverbot.io";
 const prefix = "why#";
 const botver = "b.2.1.1"
-const ytdl = require("ytdl-core");
-const request = require("request");
-const fs = require("fs");
-const getYouTubeID = require("get-youtube-id");
-const fetchVideoInfo = require("youtube-info");
+import ytdl from "ytdl-core";
+import request from "request";
+import fs from "fs";
+import getYouTubeID from "get-youtube-id";
+import fetchVideoInfo from "youtube-info";
 const yt_api_key = process.env.YT_TOKEN;
 const bot_controller = process.env.BOT_CTRL;
 const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
 
 
-var guilds = {};
+const guilds = {};
 
-global.getRandom = function() {
-  if (arguments.length == 1) {
-      if (typeof arguments[0] == Array) {
-          var random = Math.floor(Math.random() * 1000) % arguments[0].length;
-          return arguments[0][random];
+global.getRandom = function(...args) {
+  if (args.length == 1) {
+      if (typeof args[0] == Array) {
+          var random = Math.floor(Math.random() * 1000) % args[0].length;
+          return args[0][random];
       }
   } else {
-      var random = Math.floor(Math.random() * 1000) % arguments.length;
-      return arguments[random];
+      var random = Math.floor(Math.random() * 1000) % args.length;
+      return args[random];
   }
 }
 
@@ -102,7 +102,7 @@ return true;
      message.channel.send('Here is your Pizza! :pizza: ')
 
 }else if (message.isMentioned(client.user)) {
-      clbot.create(function (err, session) {
+      clbot.create((err, session) => {
       clbot.ask(message.content, (err, response) => {
       message.channel.send(response)
         });
@@ -153,9 +153,9 @@ return true;
     message.reply(" you already voted to skip!");
   }
 }else if (lc.startsWith(`${prefix}queue`)) {
-  var message2 = "```";
-   for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++){
-     var temp = (i + 1) + ": " + guilds[message.guild.id].queueNames[i] + (i === 0? "**(Current Song)***" : "") + "\n";
+  let message2 = "```";
+   for (let i = 0; i < guilds[message.guild.id].queueNames.length; i++){
+     const temp = `${i + 1}: ${guilds[message.guild.id].queueNames[i]}${i === 0? "**(Current Song)***" : ""}\n`;
      if ((message2 + temp).length <= 2000 - 3) {
        message2 += temp;
       }else if (guilds[message.guild.id].queue.length === 0){
@@ -183,13 +183,13 @@ message.channel.send(message2);
 });
 
 
-function skip_song(message) {
-  guilds[message.guild.id].dispatcher.end();
+function skip_song({guild}) {
+  guilds[guild.id].dispatcher.end();
 }
 
-function stop_song(message) {
-  guilds[message.guild.id].queue.length = 0;
-  guilds[message.guild.id].dispatcher.end();
+function stop_song({guild}) {
+  guilds[guild.id].queue.length = 0;
+  guilds[guild.id].dispatcher.end();
 }
 
 
@@ -216,7 +216,7 @@ function playMusic(id, message) {
         guilds[message.guild.id].isPlaying = false;
         guilds[message.guild.id].voiceChannel.leave();
       } else {
-        setTimeout(function () {  
+        setTimeout(() => {  
         playMusic(guilds[message.guild.id].queue[0], message);
         },500)
       }
@@ -234,11 +234,11 @@ function getID(str, cb, message) {
   }
 }
 
-function add_to_queue(strID, message) {
+function add_to_queue(strID, {guild}) {
   if (isYoutube(strID)) {
-    guilds[message.guild.id].queue.push(getYoutubeID(strID));
+    guilds[guild.id].queue.push(getYoutubeID(strID));
   } else{
-    guilds[message.guild.id].queue.push(strID);
+    guilds[guild.id].queue.push(strID);
   }
 }
 
