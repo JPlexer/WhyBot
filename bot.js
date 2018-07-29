@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
-const prefix = "why_";
-const botver = "Version 2.1"
+const prefix = "why#";
+const botver = "Release 2.1"
 const ytdl = require("ytdl-core");
 const request = require("request");
 const fs = require("fs");
@@ -59,13 +59,13 @@ client.on('message', message => {
 }else if (lc === `${prefix}help`) {
       embed = new Discord.RichEmbed();
       embed.setColor("#00FFFB");
-      embed.setAuthor("WhyBot Help");
-      embed.setDescription(`You can use this Commands with WhyBot. Just type ${prefix}[command]`);
+      embed.setAuthor("WhyBeta Help");
+      embed.setDescription(`You can use this Commands with WhyBeta. Just type ${prefix}[command]`);
       embed.addField("Fun & Play Commands", "ping\npong\npizza\nhelp\nPing WhyBot at the beginning of a Message to chat with him", true);
       embed.addField("Music Commands", "play\nskip\nstop\nclear\nqueue", true);
       
 
-      embed.setFooter(`WhyBot by JPlexer ${botver}`);
+      embed.setFooter(`WhyBeta by JPlexer ${botver}`);
       message.channel.send("", { embed });
 return true;
 
