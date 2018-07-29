@@ -1,13 +1,13 @@
-import Discord from 'discord.js';
+const Discord = require('discord.js');
 const client = new Discord.Client();
-import cleverbot from "cleverbot.io";
+const cleverbot = require("cleverbot.io");
 const prefix = "why#";
 const botver = "b.2.1.1"
-import ytdl from "ytdl-core";
-import request from "request";
-import fs from "fs";
-import getYouTubeID from "get-youtube-id";
-import fetchVideoInfo from "youtube-info";
+const ytdl = require("ytdl-core");
+const request = require("request");
+const fs = require("fs");
+const getYouTubeID = require("get-youtube-id");
+const fetchVideoInfo = require("youtube-info");
 const yt_api_key = process.env.YT_TOKEN;
 const bot_controller = process.env.BOT_CTRL;
 const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
