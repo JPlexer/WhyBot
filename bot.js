@@ -194,7 +194,8 @@ client.on('message', message => {
 
   } else if (lc.startsWith(`${prefix}clear`)) {
     while (guilds[message.guild.id].queue.length > 0) {
-      guilds[message.guild.id].queue.pop();
+    guilds[message.channel.guild.id].queue = [];
+    guilds[message.channel.guild.id].queueNames = [];
     }
     message.reply("cleared the queue!");
   }
