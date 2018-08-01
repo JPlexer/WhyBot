@@ -55,11 +55,6 @@ client.on('message', message => {
   const args = message.content.split(' ').slice(1).join(" ");
   const member = message.member;
 
-  var songs = [{
-    id: "test"
-  }, {
-    id: "2555"
-  }]
 
   if (!guilds[message.guild.id]) {
     guilds[message.guild.id] = {
@@ -197,6 +192,12 @@ client.on('message', message => {
     message.reply('It should work!')
   }
 });
+
+var songs = [{
+  id: "test"
+}, {
+  id: "2555"
+}]
 
 function clear() {
   var newsongs = [];
