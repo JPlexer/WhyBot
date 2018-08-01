@@ -195,7 +195,7 @@ client.on('message', message => {
 });
 
 
-function clear() {
+function clear(id, message) {
   for (var i = 0; i < guilds[message.guild.id].queue.length; i++) {
 
     // Check if song[i] has the same id as song[0]
