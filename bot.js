@@ -64,6 +64,7 @@ client.on('message', message => {
       dispatcher: null,
       voiceChannel: null,
       skipReq: 0,
+      newsongs: [],
       skippers: []
     };
   }
@@ -187,31 +188,25 @@ client.on('message', message => {
     }
     message.reply("cleared the queue!");
 
-  } else if (lc === `${prefix}nqueue`) {
+  } else if (lc === `${prefix}nclear`) {
     clear(message);
     message.reply('It should work!')
   }
 });
 
-var songs = [{
-  id: "test"
-}, {
-  id: "2555"
-}]
 
 function clear() {
-  var newsongs = [];
-  for (var i = 0; i < songs.length; i++) {
+  for (var i = 0; i < guilds[message.guild.id].queue.length; i++) {
 
     // Check if song[i] has the same id as song[0]
     // song[0] should be the current song that is playing
     // push it in new array then you can put it back into songs
-    if (songs[i].id === songs[0].id) newsongs.push(songs[i]);
-    songs.splice(i, 1);
+    if (guilds[message.guild.id].queue[i].id === guilds[message.guild.id].queue[0].id) guilds[message.guild.id].newsongs.push(guilds[message.guild.id].queue[i]);
+    guilds[message.guild.id].queue.splice(i, 1);
   }
 
 
-  console.log(newsongs);
+  console.log(queue);
   // Expected result [ { id: 'test' } ]
 };
 
