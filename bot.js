@@ -55,6 +55,11 @@ client.on('message', message => {
   const args = message.content.split(' ').slice(1).join(" ");
   const member = message.member;
 
+  var songs = [{
+    id: "test"
+  }, {
+    id: "2555"
+  }]
 
   if (!guilds[message.guild.id]) {
     guilds[message.guild.id] = {
@@ -186,8 +191,28 @@ client.on('message', message => {
       guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames[0]];
     }
     message.reply("cleared the queue!");
+
+  } else if (lc === `${prefix}nqueue`) {
+    clear(message);
+    message.reply('It should work!')
   }
 });
+
+function clear() {
+  var newsongs = [];
+  for (var i = 0; i < songs.length; i++) {
+
+    // Check if song[i] has the same id as song[0]
+    // song[0] should be the current song that is playing
+    // push it in new array then you can put it back into songs
+    if (songs[i].id === songs[0].id) newsongs.push(songs[i]);
+    songs.splice(i, 1);
+  }
+
+
+  console.log(newsongs);
+  // Expected result [ { id: 'test' } ]
+};
 
 
 function skip_song({
