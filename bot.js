@@ -197,7 +197,9 @@ client.on('message', message => {
 });
 
 
-function clear(id, message, guild) {
+function clear(id, message, {
+  guild
+}) {
   for (var i = 0; i < guilds[message.guild.id].queue.length; i++) {
     if (guilds[message.guild.id].queue[i].id === guilds[message.guild.id].queue[0].id) guilds[message.guild.id].newsongs.push(guilds[message.guild.id].queue[i]);
     guilds[message.guild.id].queue.splice(i, 1);
