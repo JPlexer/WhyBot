@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
-const prefix = "#tagb_";
-const botver = "v.3"
-const branch = "HashTagBeta"
+const prefix = "why#";
+const botver = "v.2.2.1"
+const branch = "WhyBeta"
 const ytdl = require("ytdl-core");
 const request = require("request");
 const fs = require("fs");
@@ -114,11 +114,6 @@ client.on('message', message => {
     //dont tell anyone about this
   } else if (lc === `${prefix}lol`) {
     message.channel.send(':scream: You found the Secret :scream:');
-//Wikipedia
-} else if (lc.startsWith === `${prefix}wiki`) {
-  wiki.search(message.content)
-  .then((res) => console.log(res))
-  message.channel.send(res);
 
     //This is the Music Part of the Bot
   } else if (lc.startsWith(`${prefix}play`)) {
