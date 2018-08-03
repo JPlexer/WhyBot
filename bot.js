@@ -135,6 +135,7 @@ client.on('message', message => {
           }) => {
             if (err) throw new Error(err);
             message.reply(` added to queue: **${title}**`);
+            console.log(guilds[message.guild.id].queue);
             guilds[message.guild.id].queueNames.push(title);
           });
         });
@@ -192,7 +193,7 @@ client.on('message', message => {
   } else if (lc.startsWith(`${prefix}clear`)) {
     while (guilds[message.guild.id].queue.length > 0) {
       guilds[message.guild.id].queue.slice(0, 1);
-      guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames[0]];
+      guilds[message.guild.id].queueNames.slice(0, 1);;
     }
     message.reply("cleared the queue!");
   }
