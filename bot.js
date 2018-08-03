@@ -183,25 +183,12 @@ client.on('message', message => {
 
   } else if (lc.startsWith(`${prefix}clear`)) {
     while (guilds[message.guild.id].queue.length > 0) {
-      guilds[message.guild.id].queue = [];
+      guilds[message.guild.id].queue = [guilds[message.guild.id].queueNames[0]];
       guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames[0]];
     }
     message.reply("cleared the queue!");
   }
 });
-
-function clear(id, message, {
-  guild
-}) {
-  for (var i = 0; i < guilds[message.guild.id].queue.length; i++) {
-    if (guilds[message.guild.id].queue[i].id === guilds[message.guild.id].queue[0].id) guilds[message.guild.id].newsongs.push(guilds[message.guild.id].queue[i]);
-    guilds[message.guild.id].queue.splice(i, 1);
-  }
-    for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
-      if (guilds[message.guild.id].queueNames[i].id === guilds[message.guild.id].queueNames[0].id) guilds[message.guild.id].newsongNames.push(guilds[message.guild.id].queueNames[i]);
-      guilds[message.guild.id].queueNames.splice(i, 1);
-    }
-};
 
 
 function skip_song({
