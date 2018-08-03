@@ -66,6 +66,7 @@ client.on('message', message => {
       voiceChannel: null,
       skipReq: 0,
       newsongs: [],
+      newsongNames: [],
       skippers: []
     };
   }
@@ -196,16 +197,15 @@ client.on('message', message => {
 });
 
 
-function clear(id, message,{
-  guild
-}) {
+function clear(id, message, guild) {
   for (var i = 0; i < guilds[message.guild.id].queue.length; i++) {
     if (guilds[message.guild.id].queue[i].id === guilds[message.guild.id].queue[0].id) guilds[message.guild.id].newsongs.push(guilds[message.guild.id].queue[i]);
     guilds[message.guild.id].queue.splice(i, 1);
   }
-
-
-  console.log(queue);
+    for (var i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
+      if (guilds[message.guild.id].queueNames[i].id === guilds[message.guild.id].queueNames[0].id) guilds[message.guild.id].newsongNames.push(guilds[message.guild.id].queueNames[i]);
+      guilds[message.guild.id].queueNames.splice(i, 1);
+    }
 };
 
 
