@@ -11,8 +11,6 @@ const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
 const yt_api_key = process.env.YT_TOKEN;
 const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
-const gmgid = guilds[message.guild.id];
-
 
 const guilds = {};
 
@@ -55,6 +53,7 @@ client.on('message', message => {
   const lc = message.content.toLowerCase();
   const args = message.content.split(' ').slice(1).join(" ");
   const member = message.member;
+  const gmgid = guilds[message.guild.id];
 
 
   if (!gmgid) {
@@ -191,8 +190,6 @@ client.on('message', message => {
     message.reply("cleared the queue!");
   }
 });
-
-
 
 
 function skip_song({
