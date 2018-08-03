@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "why?";
-const botver = "v.2.2"
+const botver = "v.2.2.1"
 const branch = "WhyBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -11,6 +11,7 @@ const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
 const yt_api_key = process.env.YT_TOKEN;
 const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
+const wiki = require('wikipediajs')
 const guilds = {};
 
 global.getRandom = function (...args) {
@@ -38,10 +39,10 @@ function setGame() {
 }
 
 client.on('ready', () => {
-  console.log('Hey JP i am ready!')
+  console.log('Hey i loaded the Hashes!')
   client.setInterval(setGame, 30000);
   setGame();
-  clbot.setNick('WhyBot');
+  clbot.setNick('TagHash');
 });
 
 
@@ -89,7 +90,7 @@ client.on('message', message => {
     embed.addField("Music Commands", "play\nskip\nstop\nclear\nqueue", true);
 
 
-    embed.setFooter(`WhyBeta by JPlexer ${botver}`);
+    embed.setFooter(`${branch} by JPlexer ${botver}`);
     message.channel.send("", {
       embed
     });
