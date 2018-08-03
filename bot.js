@@ -38,10 +38,10 @@ function setGame() {
 }
 
 client.on('ready', () => {
-  console.log('Hey i loaded the Hashes!')
+  console.log('Ready!')
   client.setInterval(setGame, 30000);
   setGame();
-  clbot.setNick('TagHash');
+  clbot.setNick($(branch));
 });
 
 
