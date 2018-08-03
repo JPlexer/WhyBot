@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "why#";
 const botver = "b.2.1.1"
+const branch = "WhyBeta"
 const ytdl = require("ytdl-core");
 const request = require("request");
 const fs = require("fs");
@@ -86,9 +87,9 @@ client.on('message', message => {
   } else if (lc === `${prefix}help`) {
     embed = new Discord.RichEmbed();
     embed.setColor("#00FFFB");
-    embed.setAuthor("WhyBeta Help");
-    embed.setDescription(`You can use this Commands with WhyBeta. Just type ${prefix}[command]`);
-    embed.addField("Fun & Play Commands", "ping\npong\npizza\nhelp\nPing WhyBot at the beginning of a Message to chat with him", true);
+    embed.setAuthor(`${branch} Help`);
+    embed.setDescription(`You can use this Commands with ${branch}. Just type ${prefix}[command]`);
+    embed.addField("Fun & Play Commands", `ping\npong\npizza\nhelp\nPing ${branch} at the beginning of a Message to chat with him`, true);
     embed.addField("Music Commands", "play\nskip\nstop\nclear\nqueue", true);
 
 
@@ -195,19 +196,16 @@ client.on('message', message => {
 });
 
 
-function clear(id, message) {
+function clear(id, message,{
+  guild
+}) {
   for (var i = 0; i < guilds[message.guild.id].queue.length; i++) {
-
-    // Check if song[i] has the same id as song[0]
-    // song[0] should be the current song that is playing
-    // push it in new array then you can put it back into songs
     if (guilds[message.guild.id].queue[i].id === guilds[message.guild.id].queue[0].id) guilds[message.guild.id].newsongs.push(guilds[message.guild.id].queue[i]);
     guilds[message.guild.id].queue.splice(i, 1);
   }
 
 
   console.log(queue);
-  // Expected result [ { id: 'test' } ]
 };
 
 
@@ -244,6 +242,7 @@ function playMusic(id, message) {
       if (guilds[message.guild.id].queue.length === 0) {
         guilds[message.guild.id].queue = [];
         guilds[message.guild.id].queueNames = [];
+        guilds[message.guild.id].newsongs = [];
         guilds[message.guild.id].isPlaying = false;
         guilds[message.guild.id].voiceChannel.leave();
       } else {
