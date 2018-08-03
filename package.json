@@ -1,7 +1,7 @@
 {
   "name": "whybot",
   "description": "The ultra cool new bot made by JPlexer",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "main": "bot.js",
 
   "scripts": {
