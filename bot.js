@@ -25,9 +25,6 @@ global.getRandom = function (...args) {
     return args[random];
   }
 }
-function qtest() {
-  console.log(guilds[message.guild.id].queue)
-}
 function setGame() {
   client.user.setActivity(getRandom(
     "with my Users",
@@ -44,8 +41,6 @@ client.on('ready', () => {
   console.log('Hey JP i am ready!')
   client.setInterval(setGame, 30000);
   setGame();
-  client.setInterval(qtest, 3000);
-  qtest();
   clbot.setNick('WhyBot');
 });
 
@@ -153,6 +148,7 @@ client.on('message', message => {
           }) => {
             if (err) throw new Error(err);
             guilds[message.guild.id].queueNames.push(title);
+            console.log(guilds[message.guild.id].queue);
             message.reply(` now playing: **${title}**`);
           })
         });
@@ -197,6 +193,7 @@ client.on('message', message => {
   } else if (lc.startsWith(`${prefix}clear`)) {
     while (guilds[message.guild.id].queue.length > 0) {
       guilds[message.guild.id].queue.slice(0, 1);
+      console.log(guilds[message.guild.id].queue);
       guilds[message.guild.id].queueNames.slice(0, 1);;
     }
     message.reply("cleared the queue!");
