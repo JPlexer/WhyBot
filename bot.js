@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
-const prefix = "why#";
+const prefix = "why?";
 const botver = "v.2.2"
-const branch = "WhyBeta"
+const branch = "WhyBot"
 const ytdl = require("ytdl-core");
 const request = require("request");
 const fs = require("fs");
