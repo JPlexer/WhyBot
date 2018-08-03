@@ -25,6 +25,7 @@ global.getRandom = function (...args) {
     return args[random];
   }
 }
+
 function setGame() {
   client.user.setActivity(getRandom(
     "with my Users",
@@ -108,7 +109,7 @@ client.on('message', message => {
         message.channel.send(response)
       });
     });
-  //Cleverbot dm
+    //Cleverbot dm
   } else if (message.channel.type === "dm") {
     clbot.create((err, session) => {
       clbot.ask(message.content, (err, response) => {
@@ -119,7 +120,7 @@ client.on('message', message => {
     //dont tell anyone about this
   } else if (lc === `${prefix}lol`) {
     message.channel.send(':scream: You found the Secret :scream:');
-//wikipedia
+    //wikipedia
   } else if (lc.startsWith === `${prefix}wiki`) {
     message.channel.send(':scream: You found the Secret :scream:');
 
@@ -129,12 +130,10 @@ client.on('message', message => {
       if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
         getID(args, id => {
           add_to_queue(id, message);
-          fetchVideoInfo(id, (err, {
-            title
+          fetchVideoInfo(id, (err, {title
           }) => {
             if (err) throw new Error(err);
             message.reply(` added to queue: **${title}**`);
-            console.log(guilds[message.guild.id].queue);
             guilds[message.guild.id].queueNames.push(title);
           });
         });
@@ -148,7 +147,7 @@ client.on('message', message => {
           }) => {
             if (err) throw new Error(err);
             guilds[message.guild.id].queueNames.push(title);
-            console.log(guilds[message.guild.id].queue);
+
             message.reply(` now playing: **${title}**`);
           })
         });
@@ -193,7 +192,6 @@ client.on('message', message => {
   } else if (lc.startsWith(`${prefix}clear`)) {
     while (guilds[message.guild.id].queue.length > 0) {
       guilds[message.guild.id].queue.slice(0, 1);
-      console.log(guilds[message.guild.id].queue);
       guilds[message.guild.id].queueNames.slice(0, 1);;
     }
     message.reply("cleared the queue!");
