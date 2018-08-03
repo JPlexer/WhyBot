@@ -130,7 +130,8 @@ client.on('message', message => {
       if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {
         getID(args, id => {
           add_to_queue(id, message);
-          fetchVideoInfo(id, (err, {title
+          fetchVideoInfo(id, (err, {
+            title
           }) => {
             if (err) throw new Error(err);
             message.reply(` added to queue: **${title}**`);
@@ -190,10 +191,8 @@ client.on('message', message => {
     message.reply('Stopped the Music')
 
   } else if (lc.startsWith(`${prefix}clear`)) {
-    while (guilds[message.guild.id].queue.length > 0) {
-      guilds[message.guild.id].queue = [guilds[message.guild.id].queue.slice(0, 1)];
-      guilds[message.guild.id].queueNames.slice(0, 1);;
-    }
+    guilds[message.guild.id].queue = [guilds[message.guild.id].queue.slice(0, 1)];
+    guilds[message.guild.id].queueNames.slice(0, 1);;
     message.reply("cleared the queue!");
   }
 });
