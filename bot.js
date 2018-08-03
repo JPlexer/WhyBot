@@ -11,7 +11,6 @@ const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
 const yt_api_key = process.env.YT_TOKEN;
 const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
-const wiki = require('wikipediajs')
 const guilds = {};
 
 global.getRandom = function (...args) {
