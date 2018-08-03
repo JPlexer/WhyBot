@@ -104,7 +104,6 @@ client.on('message', message => {
 
     //Cleverbot server
   } else if (message.isMentioned(client.user)) {
-    console.log(message.content);
     clbot.create((err, session) => {
       clbot.ask(message.content, (err, response) => {
         message.channel.send(response)
@@ -192,7 +191,6 @@ client.on('message', message => {
 
   } else if (lc.startsWith(`${prefix}clear`)) {
     while (guilds[message.guild.id].queue.length > 0) {
-      guilds[message.guild.id].queue = [];
       guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames[0]];
     }
     message.reply("cleared the queue!");
