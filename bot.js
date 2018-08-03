@@ -11,7 +11,7 @@ const getYouTubeID = require("get-youtube-id");
 const fetchVideoInfo = require("youtube-info");
 const yt_api_key = process.env.YT_TOKEN;
 const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
-
+const wiki = require('wikipediajs')
 const guilds = {};
 
 global.getRandom = function (...args) {
@@ -63,8 +63,6 @@ client.on('message', message => {
       dispatcher: null,
       voiceChannel: null,
       skipReq: 0,
-      newsongs: [],
-      newsongNames: [],
       skippers: []
     };
   }
@@ -88,7 +86,7 @@ client.on('message', message => {
     embed.setColor("#00FFFB");
     embed.setAuthor(`${branch} Help`);
     embed.setDescription(`You can use this Commands with ${branch}. Just type ${prefix}[command]`);
-    embed.addField("Fun & Play Commands", `ping\npong\npizza\nhelp\nPing ${branch} at the beginning of a Message to chat with him`, true);
+    embed.addField("Fun & Play Commands", `ping\npong\npizza\nhelp\nPing ${branch} at the beginning of a Message or dm ${branch} to chat with him`, true);
     embed.addField("Music Commands", "play\nskip\nstop\nclear\nqueue", true);
 
 
@@ -104,8 +102,16 @@ client.on('message', message => {
   } else if (lc === `${prefix}pizza`) {
     message.channel.send('Here is your Pizza! :pizza: ')
 
-    //Cleverbot
+    //Cleverbot server
   } else if (message.isMentioned(client.user)) {
+    console.log(message.content);
+    clbot.create((err, session) => {
+      clbot.ask(message.content, (err, response) => {
+        message.channel.send(response)
+      });
+    });
+  //Cleverbot dm
+  } else if (message.channel.type === "dm") {
     clbot.create((err, session) => {
       clbot.ask(message.content, (err, response) => {
         message.channel.send(response)
@@ -114,6 +120,9 @@ client.on('message', message => {
 
     //dont tell anyone about this
   } else if (lc === `${prefix}lol`) {
+    message.channel.send(':scream: You found the Secret :scream:');
+//wikipedia
+  } else if (lc.startsWith === `${prefix}wiki`) {
     message.channel.send(':scream: You found the Secret :scream:');
 
     //This is the Music Part of the Bot
