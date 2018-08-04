@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const cleverbot = require("cleverbot.io");
 const prefix = "why#";
-const botver = "v.2.2.1"
+const botver = "v.2.2.2"
 const branch = "WhyBeta"
 const ytdl = require("ytdl-core");
 const request = require("request");
@@ -181,10 +181,14 @@ client.on('message', message => {
     message.reply('Stopped the Music')
 
   } else if (lc.startsWith(`${prefix}clear`)) {
+    if (guilds[message.guild.id].queue.length ==! 0) {
     guilds[message.guild.id].queue = [guilds[message.guild.id].queue.slice(0, 1)];
     guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames.slice(0, 1)];
     message.reply("cleared the queue!");
+  } else if (guilds[message.guild.id].queue.length === 0) {
+    message.reply("There is nothing in the Queue, Clear Unsucessful!")
   }
+}
 });
 
 
