@@ -147,9 +147,8 @@ client.on('message', message => {
       message.reply(" you need to be in a voice channel!");
     }
 
-    
+
   } else if (lc.startsWith(`${prefix}skip`)) {
-    if (guilds[message.guild.id].queue.length ==! 0) {
     if (!guilds[message.guild.id].skippers.includes(message.author.id)) {
       guilds[message.guild.id].skippers.push(message.author.id);
       guilds[message.guild.id].skipReq++;
@@ -162,14 +161,10 @@ client.on('message', message => {
     } else {
       message.reply(" you already voted to skip!");
     }
-  } else if (guilds[message.guild.id].queue.length === 0) {
-    message.reply("There is nothing to Skip")
-  }
 
 
   } else if (lc.startsWith(`${prefix}queue`)) {
     let message2 = "```";
-    if (guilds[message.guild.id].queue.length ==! 0) {
     for (let i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
       const temp = `${i + 1}: ${guilds[message.guild.id].queueNames[i]}${i === 0? "**(Current Song)***" : ""}\n`;
       if ((message2 + temp).length <= 2000 - 3) {
@@ -182,26 +177,19 @@ client.on('message', message => {
     }
     message2 += "```";
     message.channel.send(message2);
-  } else if (guilds[message.guild.id].queue.length === 0) {
-    message.reply("There is nothing in the Queue!")
-  }
+
+
 
   } else if (lc === `${prefix}stop`) {
-    if (guilds[message.guild.id].queue.length ==! 0) {
     stop_song(message);
     message.reply('Stopped the Music')
-  } else if (guilds[message.guild.id].queue.length === 0) {
-    message.reply("There is nothing to Stop!")
-  }
+
+
 
   } else if (lc.startsWith(`${prefix}clear`)) {
-    if (guilds[message.guild.id].queue.length ==! 0) {
     guilds[message.guild.id].queue = [guilds[message.guild.id].queue.slice(0, 1)];
     guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames.slice(0, 1)];
     message.reply("cleared the queue!");
-  } else if (guilds[message.guild.id].queue.length === 0) {
-    message.reply("There is nothing to Clear!")
-  }
 }
 });
 
