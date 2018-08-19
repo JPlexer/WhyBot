@@ -1,60 +1,32 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const cleverbot = require("cleverbot.io");
-const prefix = "why#";
-const botver = "v.2.2.2"
-const branch = "WhyBeta"
+const func = require("./modules/functions.js")
+const prefix = func.prefix;
+const usef = require("./modules/useful.js")
+const nousef = require("./modules/nouseful.js")
+const setGamef = usef.setGame
+const fetchVideoInfo = require("youtube-info");
 const ytdl = require("ytdl-core");
 const request = require("request");
 const fs = require("fs");
 const getYouTubeID = require("get-youtube-id");
-const fetchVideoInfo = require("youtube-info");
 const yt_api_key = process.env.YT_TOKEN;
-const clbot = new cleverbot(process.env.CL_USER, process.env.CL_TOKEN);
 const guilds = {};
-
-global.getRandom = function (...args) {
-  if (args.length == 1) {
-    if (typeof args[0] == Array) {
-      var random = Math.floor(Math.random() * 1000) % args[0].length;
-      return args[0][random];
-    }
-  } else {
-    var random = Math.floor(Math.random() * 1000) % args.length;
-    return args[random];
-  }
-}
-
-function setGame() {
-  client.user.setActivity(getRandom(
-    "with my Users",
-    "Annoying JPlexer",
-    `${prefix}help`,
-    `${botver}`,
-    `${botver}`,
-    `${prefix}help`), {
-    type: "PLAYING"
-  });
-}
-
-client.on('ready', () => {
-  console.log('Ready!')
-  client.setInterval(setGame, 30000);
-  setGame();
-  clbot.setNick(`${branch}`);
-});
-
 
 client.login(process.env.BOT_TOKEN);
 
+client.on('ready', () => {
+  console.log('Ready!')
+  client.setInterval(setGamef, 30000, client);
+  setGamef(client);
+  usef.clstart();
+});
+
 client.on('message', message => {
-  //just some Variables
   const lc = message.content.toLowerCase();
   const args = message.content.split(' ').slice(1).join(" ");
-  const member = message.member;
 
-
-  if (!guilds[message.guild.id]) {
+if (!guilds[message.guild.id]) {
     guilds[message.guild.id] = {
       queue: [],
       queueNames: [],
@@ -66,53 +38,23 @@ client.on('message', message => {
     };
   }
 
-  //tells you your ping
   if (lc === `${prefix}ping`) {
-    message.channel.send(`:ping_pong:Pong! Your ping is \`${`${Date.now() - message.createdTimestamp}`} ms\``);
-
-
-
-    //just a fun feature 'tells you your pong'
+    usef.ping(message);
 
   } else if (lc === `${prefix}pong`) {
-    message.channel.send(`:ping_pong:Ping! Your pong is \`${`${message.createdTimestamp - Date.now()}`} ms\``);
+    nousef.pong(message);
 
-
-
-    //the help
   } else if (lc === `${prefix}help`) {
-    embed = new Discord.RichEmbed();
-    embed.setColor("#00FFFB");
-    embed.setAuthor(`${branch} Help`);
-    embed.setDescription(`You can use this Commands with ${branch}. Just type ${prefix}[command]`);
-    embed.addField("Fun & Play Commands", `ping\npong\npizza\nhelp\nPing ${branch} at the beginning of a Message to chat with him`, true);
-    embed.addField("Music Commands", "play\nskip\nstop\nclear\nqueue", true);
+    usef.help(message);
 
-
-    embed.setFooter(`${branch} by JPlexer ${botver}`);
-    message.channel.send("", {
-      embed
-    });
-    return true;
-
-
-
-    //just a fun pizza feature
   } else if (lc === `${prefix}pizza`) {
-    message.channel.send('Here is your Pizza! :pizza: ')
+    nousef.pizza(message);
 
-    //Cleverbot 
   } else if (message.isMentioned(client.user)) {
-    clbot.create((err, session) => {
-      clbot.ask(message.content, (err, response) => {
-        message.channel.send(response)
-      });
-    });
+    usef.clev(message);
 
-
-    //dont tell anyone about this
   } else if (lc === `${prefix}lol`) {
-    message.channel.send(':scream: You found the Secret :scream:');
+    nousef.lol(message);
 
     //This is the Music Part of the Bot
   } else if (lc.startsWith(`${prefix}play`)) {
@@ -162,8 +104,7 @@ client.on('message', message => {
       message.reply(" you already voted to skip!");
     }
 
-
-  } else if (lc.startsWith(`${prefix}queue`)) {
+    } else if (lc.startsWith(`${prefix}queue`)) {
     let message2 = "```";
     for (let i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
       const temp = `${i + 1}: ${guilds[message.guild.id].queueNames[i]}${i === 0? "**(Current Song)***" : ""}\n`;
@@ -190,17 +131,16 @@ client.on('message', message => {
     guilds[message.guild.id].queue = [guilds[message.guild.id].queue.slice(0, 1)];
     guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames.slice(0, 1)];
     message.reply("cleared the queue!");
-}
+  }
 });
 
-
-function skip_song({
+skip_song = function ({
   guild
 }) {
   guilds[guild.id].dispatcher.end();
 }
 
-function stop_song({
+stop_song = function({
   guild
 }) {
   guilds[guild.id].queue.length = 0;
@@ -208,7 +148,7 @@ function stop_song({
 }
 
 
-function playMusic(id, message) {
+playMusic = function (id, message) {
   guilds[message.guild.id].voiceChannel = message.member.voiceChannel;
 
 
@@ -239,7 +179,7 @@ function playMusic(id, message) {
   });
 }
 
-function getID(str, cb, message) {
+getID = function(str, cb, message) {
   if (isYoutube(str)) {
     cb(getYouTubeID(str));
   } else {
@@ -249,7 +189,7 @@ function getID(str, cb, message) {
   }
 }
 
-function add_to_queue(strID, {
+add_to_queue = function (strID, {
   guild
 }) {
   if (isYoutube(strID)) {
@@ -259,11 +199,11 @@ function add_to_queue(strID, {
   }
 }
 
-function isYoutube(str) {
+isYoutube = function (str) {
   return str.toLowerCase().includes("youtube.com");
 }
 
-function search_video(query, callback) {
+search_video = function (query, callback) {
   request(`https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=${encodeURIComponent(query)}&key=${yt_api_key}`, (error, response, body) => {
     const json = JSON.parse(body);
     if (!json.items[0]) callback("3_-a9nVZYjk");
