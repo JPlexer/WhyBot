@@ -108,6 +108,8 @@ module.exports = {
           setTimeout(() => {
             this.playMusic(id, message, guilds, guilds[message.guild.id].queue[0],);
           }, 500)
+          console.log(guilds[message.guild.id].queue)
+          console.log(guilds[message.guild.id].queueNames)
         }
       })
     });
