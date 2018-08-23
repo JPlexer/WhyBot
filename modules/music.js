@@ -106,7 +106,7 @@ module.exports = {
           guilds[message.guild.id].voiceChannel.leave();
         } else {
           setTimeout(() => {
-            this.playMusic(guilds[message.guild.id].queue[0], message);
+            this.playMusic(id, message, guilds, guilds[message.guild.id].queue[0],);
           }, 500)
         }
       })
