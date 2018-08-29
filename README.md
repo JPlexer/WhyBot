@@ -1,4 +1,4 @@
-# WhyBot Discontinued
+# WhyBot (Discontinued)
 
 The Super Cool Fun Bot by JPlexer....
 
