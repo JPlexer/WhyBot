@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   prefix: "why#",
-  botver: "b.3.0.0",
+  botver: "b.4.0.0",
   branch: "WhyBeta",
 }

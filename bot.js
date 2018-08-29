@@ -1,16 +1,16 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const guilds = {};
+const tinydate = require('tinydate');
+const cmdhelp = require("./modules/cmdhelp.js")
 const func = require("./modules/functions.js")
 const prefix = func.prefix;
+const setGamef = func.setGame;
 const usef = require("./modules/useful.js")
 const nousef = require("./modules/nouseful.js")
 const eval = require("./modules/evil.js")
 const music = require("./modules/music.js")
-const setGamef = func.setGame
-const guilds = {};
-
-
-client.login(process.env.BOT_TOKEN);
+const mod = require("./modules/mod.js")
 
 client.on('ready', () => {
   console.log('Ready!')
@@ -19,10 +19,14 @@ client.on('ready', () => {
   usef.clstart();
 });
 
+client.login(process.env.BOT_TOKEN);
+
 client.on('message', message => {
   const lc = message.content.toLowerCase();
   const args = message.content.split(' ').slice(1).join(" ");
   const args2 = message.content.split(' ').slice(1);
+  const mute = message.guild.roles.find("name", "muted");
+  const time = tinydate('{DD}.{MM}.{YYYY} {HH}:{mm}:{ss}');
 
   if (!guilds[message.guild.id]) {
     guilds[message.guild.id] = {
@@ -36,49 +40,109 @@ client.on('message', message => {
     };
   }
 
-  if (lc === `${prefix}ping`) {
+  if (lc.startsWith(`${prefix}ping`)) {
     usef.ping(message);
 
-  } else if (lc === `${prefix}pong`) {
+  }else if (lc.startsWith(`${prefix}help ping`)){
+    cmdhelp.helpping(message);
+
+  } else if (lc.startsWith(`${prefix}pong`)) {
     nousef.pong(message);
+
+  }else if (lc.startsWith(`${prefix}help pong`)){
+    cmdhelp.helppong(message);
 
   } else if (lc === `${prefix}help`) {
     usef.help(message);
 
-  } else if (lc === `${prefix}credits`) {
-    usef.credits(message);
-
-  } else if (lc === `${prefix}invite`) {
-    usef.invite(message);
-
-  } else if (lc === `${prefix}pizza`) {
+  } else if (lc.startsWith(`${prefix}pizza`)) {
     nousef.pizza(message);
+
+  }else if (lc.startsWith(`${prefix}help pizza`)){
+    cmdhelp.helppizza(message);
 
   } else if (message.isMentioned(client.user)) {
     usef.clev(message);
 
-  } else if (lc === `${prefix}lol`) {
-    nousef.lol(message);
-
   } else if (lc.startsWith(`${prefix}eval`)) {
     eval(client, message, args2);
 
-  } else if (lc.startsWith(`${prefix}wiki`)) {
-    usef.wiki(message, args);
+  } else if (lc.startsWith(`${prefix}kick`)) {
+    mod.kick(message, args2, time);
+
+  }else if (lc.startsWith(`${prefix}help kick`)){
+    cmdhelp.helpkick(message);
+
+  } else if (lc.startsWith(`${prefix}ban`)) {
+    mod.ban(message, args2, time);
+
+  }else if (lc.startsWith(`${prefix}help ban`)){
+    cmdhelp.helpban(message);
+
+  } else if (lc.startsWith(`${prefix}mute`)) {
+    mod.mute(message, args2, time, mute);
+
+  }else if (lc.startsWith(`${prefix}help mute`)){
+    cmdhelp.helpmute(message);
+
+  } else if (lc.startsWith(`${prefix}tempmute`)) {
+    mod.tempmute(message, args2, time, mute);
+
+  }else if (lc.startsWith(`${prefix}help tempmute`)){
+    cmdhelp.helptempmute(message);
+
+  } else if (lc.startsWith(`${prefix}tempban`)) {
+    mod.tempban(message, args2, time);
+
+  }else if (lc.startsWith(`${prefix}help tempban`)){
+    cmdhelp.helptempban(message);
+
+  } else if (lc.startsWith(`${prefix}unmute`)) {
+    mod.unmute(message, mute);
+
+  }else if (lc.startsWith(`${prefix}help unmute`)){
+    cmdhelp.helpunmute(message);
+
+  } else if (lc.startsWith(`${prefix}warn`)) {
+    mod.warn(message, args2, time)
+
+  }else if (lc.startsWith(`${prefix}help warn`)){
+    cmdhelp.helpwarn(message);
+
+  } else if (lc.startsWith(`${prefix}sinfo`)) {
+    mod.sinfo(message);
+
+  }else if (lc.startsWith(`${prefix}help sinfo`)){
+    cmdhelp.helpsinfo(message);
 
   } else if (lc.startsWith(`${prefix}play`)) {
     music.play(message, guilds, args);
 
+  }else if (lc.startsWith(`${prefix}help play`)){
+    cmdhelp.helpplay(message);
+
   } else if (lc.startsWith(`${prefix}skip`)) {
     music.skip(message, guilds);
+
+  }else if (lc.startsWith(`${prefix}help skip`)){
+    cmdhelp.helpskip(message);
 
   } else if (lc.startsWith(`${prefix}queue`)) {
     music.queue(message, guilds);
 
-  } else if (lc === `${prefix}stop`) {
+  }else if (lc.startsWith(`${prefix}help queue`)){
+    cmdhelp.helpqueue(message);
+
+  } else if (lc.startsWith(`${prefix}stop`)) {
     music.stop(message, guilds);
+
+  }else if (lc.startsWith(`${prefix}help stop`)){
+    cmdhelp.helpstop(message);
 
   } else if (lc.startsWith(`${prefix}clear`)) {
     music.clear(message, guilds);
+
+  }else if (lc.startsWith(`${prefix}help clear`)){
+    cmdhelp.helpclear(message);
   }
 });

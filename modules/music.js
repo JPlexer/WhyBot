@@ -38,18 +38,8 @@ module.exports = {
     }
   },
   skip: function (message, guilds) {
-    if (!guilds[message.guild.id].skippers.includes(message.author.id)) {
-      guilds[message.guild.id].skippers.push(message.author.id);
-      guilds[message.guild.id].skipReq++;
-      if (guilds[message.guild.id].skipReq >= Math.ceil((guilds[message.guild.id].voiceChannel.members.size - 1) / 2)) {
-        this.skip_song(message, guilds);
+    this.skip_song(message, guilds);
         message.reply(" your skip has been acknowledged. Skipping now");
-      } else {
-        message.reply(`${` your skip has been acknolwedged. You need **${Math.ceil((guilds[message.guild.id].voiceChannel.members.size - 1) / 2)}` - skipReq}** more skip votes!`);
-      }
-    } else {
-      message.reply(" you already voted to skip!");
-    }
   },
   queue: function (message, guilds) {
     let message2 = "```";

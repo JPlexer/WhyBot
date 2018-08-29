@@ -19,9 +19,10 @@ module.exports = {
         embed = new Discord.RichEmbed();
         embed.setColor("#00FFFB");
         embed.setAuthor(`${functions.branch} Help`);
-        embed.setDescription(`You can use this Commands with ${functions.branch}. Just type ${functions.prefix}[command]`);
+        embed.setDescription(`You can use this Commands with ${functions.branch}. Just type ${functions.prefix}[command]. For help with a specific command, enter ${functions.prefix}help [command]`);
         embed.addField("Fun & Play Commands", `ping\npong\npizza\nhelp\ncredits\ninvite\nPing ${functions.branch} at the beginning of a Message to chat with him`, true);
         embed.addField("Music Commands", "play\nskip\nstop\nclear\nqueue", true);
+        embed.addField("Mod Commands", "kick\nban\ntempban\nmute\ntempmute\nunmute\nwarn", true);
         embed.setFooter(`${functions.branch} by JPlexer ${functions.botver}`);
         message.channel.send("", {
             embed
