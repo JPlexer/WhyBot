@@ -15,14 +15,16 @@ module.exports = {
   },
   setGame: function (client) {
     client.user.setActivity(module.exports.getRandom(
-      "with my Users",
-      "Annoying JPlexer",
+      "Discontinued",
+      "Discontinued",
+      "Discontinued",
+      "Discontinued",
+      "Discontinued",
       `${module.exports.prefix}help`,
-      `${module.exports.botver}`,
-      `${module.exports.botver}`,
-      `${module.exports.prefix}help`), {
+      `${module.exports.prefix}help`, 
+      `${module.exports.prefix}help`,  {
       type: "PLAYING"
-    });
+    }));
   },
   prefix: "why?",
   botver: "v.3.0.0",
